@@ -77,6 +77,7 @@ include '../function/function.php';
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tampilan:</h6>
                         <a class="collapse-item" href="buttons.html">Dashboard Siswa</a>
+                        <a class="collapse-item" href="buttons.html">Tambah Data Siswa</a>
                     </div>
                 </div>
             </li>
