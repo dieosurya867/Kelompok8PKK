@@ -62,55 +62,55 @@ include '../function/function.php';
                                 <div class="mb-3">
                                     <label for="" class="form-label">ID Buku</label>
                                     <input type="text" class="form-control" name="id_buku" id=""
-                                        aria-describedby="" placeholder="Masukkan ID Buku">
+                                         placeholder="Masukkan ID Buku">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penulis</label>
                                     <input type="text" class="form-control" name="penulis" id=""
-                                        aria-describedby="" placeholder="Masukkan nama penulis...">
+                                         placeholder="Masukkan nama penulis...">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tahun</label>
                                     <input type="text" class="form-control" name="tahun" id=""
-                                        aria-describedby="" placeholder="Masukkan tahun buku...">
+                                        placeholder="Masukkan tahun buku...">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Judul</label>
                                     <input type="text" class="form-control" name="judul" id=""
-                                        aria-describedby="" placeholder="Masukkan judul buku...">
+                                        placeholder="Masukkan judul buku...">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Kota</label>
                                     <input type="text" class="form-control" name="kota" id=""
-                                        aria-describedby="" placeholder="">
+                                        placeholder="">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penerbit</label>
                                     <input type="text" class="form-control" name="penerbit" id=""
-                                        aria-describedby="" placeholder="Masukkan nama penerbit buku...">
+                                        placeholder="Masukkan nama penerbit buku...">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Cover</label>
                                     <input type="text" class="form-control" name="cover" id=""
-                                        aria-describedby="" placeholder="">
+                                        placeholder="">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Sinopsis</label>
                                     <input type="text" class="form-control" name="sinopsis" id=""
-                                        aria-describedby="" placeholder="Masukkan sinopsis buku...">
+                                        placeholder="Masukkan sinopsis buku...">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Stok</label>
                                     <input type="number" class="form-control" name="stok" id=""
-                                        aria-describedby="" >
+                                        >
                                     
                                 </div>
                              
@@ -127,19 +127,19 @@ include '../function/function.php';
 
 
             <?php
-                if(isset($_POST['submit'])) {
-                    $id_buku = $_POST['id_buku'];
-                    $penulis = $_POST['penulis'];
-                    $tahun = $_POST['tahun'];
-                    $judul = $_POST['judul'];
-                    $kota = $_POST['kota'];
-                    $cover = $_POST['cover'];
-                    $sinopsis = $_POST['sinopsis'];
-                    $stok = $_POST['stok'];
+                if (isset($_POST['submit'])) {
+                    $id_buku=$_POST['id_buku'];
+                    $penulis=$_POST['penulis'];
+                    $tahun=$_POST['tahun'];
+                    $judul=$_POST['judul'];
+                    $kota=$_POST['kota'];
+                    $cover=$_POST['cover'];
+                    $sinopsis=$_POST['sinopsis'];
+                    $stok=$_POST['stok'];
 
-                    $create = create("buku", "id_buku, penulis, tahun, judul, kota, cover, sinopsis, stok", "'$id_buku','$penulis','$tahun', '$judul', '$kota', '$cover', '$sinopsis', '$stok'");
+                    $add=create("buku", "id_buku, penulis, tahun, judul, kota, cover, sinopsis, stok","'$id_buku','$penulis','$tahun', '$judul', '$kota', '$cover', '$sinopsis', '$stok'");
                     
-                    if($create) {
+                    if($add) {
                         echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
                         header("Location:databuku.php");
                     }else {
