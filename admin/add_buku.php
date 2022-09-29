@@ -29,9 +29,9 @@ include '../function/function.php';
 </head>
 
 <body id="page-top">
+<?php include ("sidebar.php")?>
 
     <!-- Front End & Back End Gita Kartika Pariwara -->
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
