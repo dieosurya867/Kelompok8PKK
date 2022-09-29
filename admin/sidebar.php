@@ -210,7 +210,7 @@ include '../function/config.php';
 
             <!-- Topbar Search Front-End Dieo -->
               <div class="d-sm-flex align-items-center justify-content-between ">
-                <h1 class="h3 mb-0 text-gray-800">Kelompok 8 PKK</h1>
+                <h1 class="h3 mb-0 text-gray-800">Kelompok 8 PKK - Sistem Informasi Perpustakaan</h1>
               </div>
             
 
