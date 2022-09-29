@@ -92,7 +92,7 @@ include '../function/function.php';
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tampilan:</h6>
                         <a class="collapse-item" href="utilities-color.html">Dashboard Buku</a>
-                        <a class="collapse-item" href="utilities-border.html">Tambah Data Buku</a>
+                        <a class="collapse-item" href="add_buku.php">Tambah Data Buku</a>
 
                     </div>
             </li>
@@ -159,7 +159,7 @@ include '../function/function.php';
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <a href="#" class="btn btn-primary">
+                                <a href="add_buku.php" class="btn btn-primary">
                                     Tambah Buku
                                 </a> <br><br>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -197,7 +197,7 @@ include '../function/function.php';
                                         <!-- Gita -->
                                         <?php
 
-                                        $ambil = read('buku');
+                                        $ambil = read('buku','id_buku');
                                         $no = 1;
                                         while ($data = mysqli_fetch_assoc($ambil)) {
                                         ?>

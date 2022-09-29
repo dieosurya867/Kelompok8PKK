@@ -179,13 +179,11 @@ include '../function/function.php';
                     
                     if($add) {
                         echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
-                        header("Location:databuku.php");
+                        echo "<script>window.location.href='databuku.php'</script>";
                     }else {
                         echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
                     }
-                }
-    ?>
-
+                }?>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
