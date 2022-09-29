@@ -1,14 +1,9 @@
 <?php
-
 include '../function/config.php';
 include '../function/function.php';
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -52,70 +47,69 @@ include '../function/function.php';
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tambah Data Buku</h1>
 
+                    <!-- Gita -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Tambah Buku Perpus</h6>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="" method="POST">
                                 <div class="mb-3">
                                     <label for="" class="form-label">ID Buku</label>
                                     <input type="text" class="form-control" name="id_buku" id=""
-                                         placeholder="Masukkan ID Buku">
-                                    
+                                        placeholder="Masukkan ID Buku">
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penulis</label>
                                     <input type="text" class="form-control" name="penulis" id=""
-                                         placeholder="Masukkan nama penulis...">
-                                    
+                                        placeholder="Masukkan nama penulis...">
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tahun</label>
                                     <input type="text" class="form-control" name="tahun" id=""
                                         placeholder="Masukkan tahun buku...">
-                                    
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Judul</label>
                                     <input type="text" class="form-control" name="judul" id=""
                                         placeholder="Masukkan judul buku...">
-                                    
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Kota</label>
-                                    <input type="text" class="form-control" name="kota" id=""
-                                        placeholder="">
-                                    
+                                    <input type="text" class="form-control" name="kota" id="" placeholder="">
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penerbit</label>
                                     <input type="text" class="form-control" name="penerbit" id=""
                                         placeholder="Masukkan nama penerbit buku...">
-                                    
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Cover</label>
-                                    <input type="text" class="form-control" name="cover" id=""
-                                        placeholder="">
-                                    
+                                    <input type="text" class="form-control" name="cover" id="" placeholder="">
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Sinopsis</label>
                                     <input type="text" class="form-control" name="sinopsis" id=""
                                         placeholder="Masukkan sinopsis buku...">
-                                    
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Stok</label>
-                                    <input type="number" class="form-control" name="stok" id=""
-                                        >
-                                    
+                                    <input type="number" class="form-control" name="stok" id="">
                                 </div>
-                             
-                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
+
+           
                         </div>
                     </div>
 
@@ -126,27 +120,7 @@ include '../function/function.php';
             <!-- End of Main Content -->
 
 
-            <?php
-                if (isset($_POST['submit'])) {
-                    $id_buku=$_POST['id_buku'];
-                    $penulis=$_POST['penulis'];
-                    $tahun=$_POST['tahun'];
-                    $judul=$_POST['judul'];
-                    $kota=$_POST['kota'];
-                    $cover=$_POST['cover'];
-                    $sinopsis=$_POST['sinopsis'];
-                    $stok=$_POST['stok'];
 
-                    $add=create("buku", "id_buku, penulis, tahun, judul, kota, cover, sinopsis, stok","'$id_buku','$penulis','$tahun', '$judul', '$kota', '$cover', '$sinopsis', '$stok'");
-                    
-                    if($add) {
-                        echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
-                        header("Location:databuku.php");
-                    }else {
-                        echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
-                    }
-                }
-            ?>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -187,6 +161,30 @@ include '../function/function.php';
             </div>
         </div>
     </div>
+
+    <!-- Gita -->
+
+    <?php
+         if (isset($_POST['submit'])) {
+                    $id_buku=$_POST['id_buku'];
+                    $penulis=$_POST['penulis'];
+                    $tahun=$_POST['tahun'];
+                    $judul=$_POST['judul'];
+                    $kota=$_POST['kota'];
+                    $cover=$_POST['cover'];
+                    $sinopsis=$_POST['sinopsis'];
+                    $stok=$_POST['stok'];
+
+                    $add=create("buku", "id_buku, penulis, tahun, judul, kota, cover, sinopsis, stok","'$id_buku','$penulis','$tahun', '$judul', '$kota', '$cover', '$sinopsis', '$stok'");
+                    
+                    if($add) {
+                        echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
+                        header("Location:databuku.php");
+                    }else {
+                        echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
+                    }
+                }
+    ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
