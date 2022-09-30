@@ -25,8 +25,20 @@ function edit($table, $col, $id) {
 }
 
 
+function update($tabel, $value, $kolomkey, $valuekey){
+    global $db;
+    $query = "UPDATE  " . $tabel . " set " . $value . " where $kolomkey = $valuekey";
+    $cek = mysqli_query($db, $query);
+    return $cek;
+}
 
 
+function delete($table, $cols, $id) {
+    global $db;
+    $query = "DELETE FROM $table WHERE $cols = $id";
+    $cek = mysqli_query($db, $query);
+    return $cek;
+}
 ?>
 
 

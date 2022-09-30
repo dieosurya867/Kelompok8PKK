@@ -1,6 +1,21 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+
+
+// Gita 
+//hapus data
+if (isset($_GET['id_buku'])) {
+    $id_buku = $_GET['id_buku'];
+    $query = delete("buku", "id_buku" ,"$id_buku");
+   
+    if($query) {
+      echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
+    }
+    else {
+      echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +126,7 @@ include '../function/function.php';
                                         <td><?= $data['stok'] ?></td>
                                         <td> <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
                                                 class="btn btn-sm btn-primary" role="button">EDIT</a>
-                                            <a href='delete_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
+                                            <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
                                                 class="btn btn-sm btn-danger" role="button"
                                                 onclick="return confirm('Are you sure want to delete this?')">HAPUS</a>
                                         </td>
