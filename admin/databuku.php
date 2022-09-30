@@ -45,7 +45,7 @@ if (isset($_GET['id_buku'])) {
 </head>
 
 <body id="page-top">
-    <?php include ("sidebar.php")?>
+    <?php include("sidebar.php") ?>
 
     <!-- Back End Gita Kartika Pariwara -->
     <!-- Content Wrapper -->
@@ -106,21 +106,21 @@ if (isset($_GET['id_buku'])) {
                                     <!-- Gita -->
                                     <?php
 
-                                        $ambil = read('buku','id_buku');
-                                        $no = 1;
-                                        while ($data = mysqli_fetch_assoc($ambil)) {
-                                        ?>
+                                    $ambil = read('buku', 'id_buku');
+                                    $no = 1;
+                                    while ($data = mysqli_fetch_assoc($ambil)) {
+                                    ?>
                                     <tr>
                                         <td><?= $no;
-                                                    $no++ ?></td>
+                                                $no++ ?></td>
                                         <td><?= $data['id_buku'] ?></td>
                                         <td><?= $data['penulis'] ?></td>
                                         <td><?= $data['tahun'] ?></td>
                                         <td><?= $data['judul'] ?></td>
                                         <td><?= $data['kota'] ?></td>
-                                        <td><?= $data['penerbit'] ?></td>
                                         <td>
-                                            <img class="img-thumbnail" src="../foto/<?= $data['cover']?>" alt="foto" style="width:175px">
+                                            <img class="img-thumbnail" src="../foto/<?= $data['cover']?>" alt="foto"
+                                                style="width:175px">
                                         </td>
                                         <td><?= $data['sinopsis'] ?></td>
                                         <td><?= $data['stok'] ?></td>
@@ -129,11 +129,14 @@ if (isset($_GET['id_buku'])) {
                                             <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
                                                 class="btn btn-sm btn-danger" role="button"
                                                 onclick="return confirm('Are you sure want to delete this?')">HAPUS</a>
+                                            <a href='pinjam.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
+                                                class="btn btn-sm btn-warning" role="button">Pinjam <i
+                                                    class="fa-solid fa-book-bookmark fa-2xs"></i></a>
                                         </td>
                                     </tr>
                                     <?php
-                                        }
-                                        ?>
+                                    }
+                                    ?>
 
                                 </tbody>
                             </table>

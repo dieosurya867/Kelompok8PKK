@@ -4,6 +4,7 @@ include '../function/function.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -16,9 +17,7 @@ include '../function/function.php';
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -29,7 +28,7 @@ include '../function/function.php';
 </head>
 
 <body id="page-top">
-<?php include ("sidebar.php")?>
+    <?php include("sidebar.php") ?>
 
     <!-- Front End & Back End Gita Kartika Pariwara -->
     <!-- Page Wrapper -->
@@ -57,26 +56,22 @@ include '../function/function.php';
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="" class="form-label">ID Buku</label>
-                                    <input type="text" class="form-control" name="id_buku" id=""
-                                        placeholder="Masukkan ID Buku">
+                                    <input type="text" class="form-control" name="id_buku" id="" placeholder="Masukkan ID Buku">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penulis</label>
-                                    <input type="text" class="form-control" name="penulis" id=""
-                                        placeholder="Masukkan nama penulis...">
+                                    <input type="text" class="form-control" name="penulis" id="" placeholder="Masukkan nama penulis...">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tahun</label>
-                                    <input type="text" class="form-control" name="tahun" id=""
-                                        placeholder="Masukkan tahun buku...">
+                                    <input type="text" class="form-control" name="tahun" id="" placeholder="Masukkan tahun buku...">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Judul</label>
-                                    <input type="text" class="form-control" name="judul" id=""
-                                        placeholder="Masukkan judul buku...">
+                                    <input type="text" class="form-control" name="judul" id="" placeholder="Masukkan judul buku...">
 
                                 </div>
                                 <div class="mb-3">
@@ -86,8 +81,7 @@ include '../function/function.php';
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penerbit</label>
-                                    <input type="text" class="form-control" name="penerbit" id=""
-                                        placeholder="Masukkan nama penerbit buku...">
+                                    <input type="text" class="form-control" name="penerbit" id="" placeholder="Masukkan nama penerbit buku...">
 
                                 </div>
                                 <div class="mb-3">
@@ -96,8 +90,7 @@ include '../function/function.php';
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Sinopsis</label>
-                                    <input type="text" class="form-control" name="sinopsis" id=""
-                                        placeholder="Masukkan sinopsis buku...">
+                                    <input type="text" class="form-control" name="sinopsis" id="" placeholder="Masukkan sinopsis buku...">
 
                                 </div>
                                 <div class="mb-3">
@@ -108,7 +101,7 @@ include '../function/function.php';
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
 
-           
+
                         </div>
                     </div>
 
@@ -142,8 +135,7 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -164,27 +156,28 @@ include '../function/function.php';
     <!-- Gita -->
 
     <?php
-         if (isset($_POST['submit'])) {
-                    $id_buku=$_POST['id_buku'];
-                    $penulis=$_POST['penulis'];
-                    $tahun=$_POST['tahun'];
-                    $judul=$_POST['judul'];
-                    $kota=$_POST['kota'];
-                    $file = $_FILES['cover']['name'];
-                    $tmp_name = $_FILES['cover']['tmp_name'];
-                    move_uploaded_file($tmp_name, "../foto/". $file);
-                    $sinopsis=$_POST['sinopsis'];
-                    $stok=$_POST['stok'];
+    if (isset($_POST['submit'])) {
+        $id_buku = $_POST['id_buku'];
+        $penulis = $_POST['penulis'];
+        $tahun = $_POST['tahun'];
+        $judul = $_POST['judul'];
+        $kota = $_POST['kota'];
+        $penerbit = $_POST['penerbit'];
+        $file = $_FILES['cover']['name'];
+        $tmp_name = $_FILES['cover']['tmp_name'];
+        move_uploaded_file($tmp_name, "../foto/" . $file);
+        $sinopsis = $_POST['sinopsis'];
+        $stok = $_POST['stok'];
 
-                    $add=create("buku", "id_buku, penulis, tahun, judul, kota, cover, sinopsis, stok","'$id_buku','$penulis','$tahun', '$judul', '$kota', '$file', '$sinopsis', '$stok'");
-                    
-                    if($add) {
-                        echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
-                        echo "<script>window.location.href='databuku.php'</script>";
-                    }else {
-                        echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
-                    }
-                }?>
+        $add = create("buku", "id_buku, penulis, tahun, judul, kota, penerbit, cover, sinopsis, stok", "'$id_buku','$penulis','$tahun', '$judul', '$kota', '$penerbit', '$file', '$sinopsis', '$stok'");
+
+        if ($add) {
+            echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
+            echo "<script>window.location.href='databuku.php'</script>";
+        } else {
+            echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
+        }
+    } ?>
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
