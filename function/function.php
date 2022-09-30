@@ -17,6 +17,16 @@ function create($table, $cols, $value) {
     return $cek;
 }
 
+function edit($table, $col, $id) {
+    global $db;
+    $query = "SELECT * FROM $table WHERE $col = $id ";
+    $cek = mysqli_query($db, $query);
+    return $cek;
+}
+
+
+
+
 ?>
 
 

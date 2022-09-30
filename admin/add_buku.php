@@ -54,7 +54,7 @@ include '../function/function.php';
                             <h6 class="m-0 font-weight-bold text-primary">Tambah Buku Perpus</h6>
                         </div>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="" class="form-label">ID Buku</label>
                                     <input type="text" class="form-control" name="id_buku" id=""
@@ -92,8 +92,7 @@ include '../function/function.php';
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Cover</label>
-                                    <input type="text" class="form-control" name="cover" id="" placeholder="">
-
+                                    <input type="file" class="form-control" name="cover">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Sinopsis</label>
@@ -171,11 +170,13 @@ include '../function/function.php';
                     $tahun=$_POST['tahun'];
                     $judul=$_POST['judul'];
                     $kota=$_POST['kota'];
-                    $cover=$_POST['cover'];
+                    $file = $_FILES['cover']['name'];
+                    $tmp_name = $_FILES['cover']['tmp_name'];
+                    move_uploaded_file($tmp_name, "../foto/". $file);
                     $sinopsis=$_POST['sinopsis'];
                     $stok=$_POST['stok'];
 
-                    $add=create("buku", "id_buku, penulis, tahun, judul, kota, cover, sinopsis, stok","'$id_buku','$penulis','$tahun', '$judul', '$kota', '$cover', '$sinopsis', '$stok'");
+                    $add=create("buku", "id_buku, penulis, tahun, judul, kota, cover, sinopsis, stok","'$id_buku','$penulis','$tahun', '$judul', '$kota', '$file', '$sinopsis', '$stok'");
                     
                     if($add) {
                         echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";

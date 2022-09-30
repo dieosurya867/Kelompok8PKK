@@ -17,7 +17,9 @@ include '../function/function.php';
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -28,113 +30,120 @@ include '../function/function.php';
 </head>
 
 <body id="page-top">
-<?php include ("sidebar.php")?>
+    <?php include ("sidebar.php")?>
 
     <!-- Back End Gita Kartika Pariwara -->
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
-            <div id="content">
+        <!-- Main Content -->
+        <div id="content">
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
-                    <!-- Page Heading  Gita-->
-                    <h1 class="h3 mb-2 text-gray-800">Data Buku</h1>
-                    <p class="mb-4">Berikut ini adalah data buku yang tersedia di perpustakaan </p>
+                <!-- Page Heading  Gita-->
+                <h1 class="h3 mb-2 text-gray-800">Data Buku</h1>
+                <p class="mb-4">Berikut ini adalah data buku yang tersedia di perpustakaan </p>
 
-                    <!-- DataTales Example Gita-->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Buku Perpus</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <a href="add_buku.php" class="btn btn-primary">
-                                    Tambah Buku
-                                </a> <br><br>
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>ID Buku</th>
-                                            <th>Penulis</th>
-                                            <th>Tahun</th>
-                                            <th>Judul</th>
-                                            <th>Kota</th>
-                                            <th>Penerbit</th>
-                                            <th>Cover</th>
-                                            <th>Sinopsis</th>
-                                            <th>Stok</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>ID Buku</th>
-                                            <th>Penulis</th>
-                                            <th>Tahun</th>
-                                            <th>Judul</th>
-                                            <th>Kota</th>
-                                            <th>Penerbit</th>
-                                            <th>Cover</th>
-                                            <th>Sinopsis</th>
-                                            <th>Stok</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <!-- Gita -->
-                                        <?php
+                <!-- DataTales Example Gita-->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Data Buku Perpus</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <a href="add_buku.php" class="btn btn-primary">
+                                Tambah Buku
+                            </a> <br><br>
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>ID Buku</th>
+                                        <th>Penulis</th>
+                                        <th>Tahun</th>
+                                        <th>Judul</th>
+                                        <th>Kota</th>
+                                        <th>Penerbit</th>
+                                        <th>Cover</th>
+                                        <th>Sinopsis</th>
+                                        <th>Stok</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>ID Buku</th>
+                                        <th>Penulis</th>
+                                        <th>Tahun</th>
+                                        <th>Judul</th>
+                                        <th>Kota</th>
+                                        <th>Penerbit</th>
+                                        <th>Cover</th>
+                                        <th>Sinopsis</th>
+                                        <th>Stok</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <!-- Gita -->
+                                    <?php
 
                                         $ambil = read('buku','id_buku');
                                         $no = 1;
                                         while ($data = mysqli_fetch_assoc($ambil)) {
                                         ?>
-                                            <tr>
-                                                <td><?= $no;
+                                    <tr>
+                                        <td><?= $no;
                                                     $no++ ?></td>
-                                                <td><?= $data['id_buku'] ?></td>
-                                                <td><?= $data['penulis'] ?></td>
-                                                <td><?= $data['tahun'] ?></td>
-                                                <td><?= $data['judul'] ?></td>
-                                                <td><?= $data['kota'] ?></td>
-                                                <td><?= $data['penerbit'] ?></td>
-                                                <td><?= $data['cover'] ?></td>
-                                                <td><?= $data['sinopsis'] ?></td>
-                                                <td><?= $data['stok'] ?></td>
-                                                <td> </td>
-                                            </tr>
-                                        <?php
+                                        <td><?= $data['id_buku'] ?></td>
+                                        <td><?= $data['penulis'] ?></td>
+                                        <td><?= $data['tahun'] ?></td>
+                                        <td><?= $data['judul'] ?></td>
+                                        <td><?= $data['kota'] ?></td>
+                                        <td><?= $data['penerbit'] ?></td>
+                                        <td>
+                                            <img class="img-thumbnail" src="../foto/<?= $data['cover']?>" alt="foto" style="width:175px">
+                                        </td>
+                                        <td><?= $data['sinopsis'] ?></td>
+                                        <td><?= $data['stok'] ?></td>
+                                        <td> <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
+                                                class="btn btn-sm btn-primary" role="button">EDIT</a>
+                                            <a href='delete_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
+                                                class="btn btn-sm btn-danger" role="button"
+                                                onclick="return confirm('Are you sure want to delete this?')">HAPUS</a>
+                                        </td>
+                                    </tr>
+                                    <?php
                                         }
                                         ?>
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Gita Kartika - Dieo Surya Kelompok 8</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Gita Kartika - Dieo Surya Kelompok 8</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -145,7 +154,8 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
