@@ -118,6 +118,7 @@ if (isset($_GET['id_buku'])) {
                                         <td><?= $data['tahun'] ?></td>
                                         <td><?= $data['judul'] ?></td>
                                         <td><?= $data['kota'] ?></td>
+                                        <td><?= $data['penerbit'] ?></td>
                                         <td>
                                             <img class="img-thumbnail" src="../foto/<?= $data['cover']?>" alt="foto"
                                                 style="width:175px">
