@@ -17,9 +17,7 @@ include '../function/function.php';
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -30,7 +28,7 @@ include '../function/function.php';
 </head>
 
 <body id="page-top">
-    <?php include ("sidebar.php")?>
+    <?php include("sidebar.php") ?>
 
     <!-- Back End Gita Kartika Pariwara -->
     <!-- Content Wrapper -->
@@ -91,34 +89,32 @@ include '../function/function.php';
                                     <!-- Gita -->
                                     <?php
 
-                                        $ambil = read('buku','id_buku');
-                                        $no = 1;
-                                        while ($data = mysqli_fetch_assoc($ambil)) {
-                                        ?>
-                                    <tr>
-                                        <td><?= $no;
-                                                    $no++ ?></td>
-                                        <td><?= $data['id_buku'] ?></td>
-                                        <td><?= $data['penulis'] ?></td>
-                                        <td><?= $data['tahun'] ?></td>
-                                        <td><?= $data['judul'] ?></td>
-                                        <td><?= $data['kota'] ?></td>
-                                        <td><?= $data['penerbit'] ?></td>
-                                        <td>
-                                            <img class="img-thumbnail" src="../foto/<?= $data['cover']?>" alt="foto" style="width:175px">
-                                        </td>
-                                        <td><?= $data['sinopsis'] ?></td>
-                                        <td><?= $data['stok'] ?></td>
-                                        <td> <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
-                                                class="btn btn-sm btn-primary" role="button">EDIT</a>
-                                            <a href='delete_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
-                                                class="btn btn-sm btn-danger" role="button"
-                                                onclick="return confirm('Are you sure want to delete this?')">HAPUS</a>
-                                        </td>
-                                    </tr>
+                                    $ambil = read('buku', 'id_buku');
+                                    $no = 1;
+                                    while ($data = mysqli_fetch_assoc($ambil)) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $no;
+                                                $no++ ?></td>
+                                            <td><?= $data['id_buku'] ?></td>
+                                            <td><?= $data['penulis'] ?></td>
+                                            <td><?= $data['tahun'] ?></td>
+                                            <td><?= $data['judul'] ?></td>
+                                            <td><?= $data['kota'] ?></td>
+                                            <td><?= $data['penerbit'] ?></td>
+                                            <td>
+                                                <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:175px">
+                                            </td>
+                                            <td><?= $data['sinopsis'] ?></td>
+                                            <td><?= $data['stok'] ?></td>
+                                            <td> <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="btn btn-sm btn-primary" role="button">EDIT <i class="fa-solid fa-file-pen fa-sm"></i></a>
+                                                <a href='delete_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="btn btn-sm btn-danger mt-2 mb-2" role="button" onclick="return confirm('Are you sure want to delete this?')">HAPUS <i class="fa-solid fa-trash fa-2xs"></i></a>
+                                                <a href='pinjam.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="btn btn-sm btn-warning" role="button">Pinjam <i class="fa-solid fa-book-bookmark fa-2xs"></i></a>
+                                            </td>
+                                        </tr>
                                     <?php
-                                        }
-                                        ?>
+                                    }
+                                    ?>
 
                                 </tbody>
                             </table>
@@ -154,8 +150,7 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
