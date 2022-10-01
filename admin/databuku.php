@@ -8,15 +8,14 @@ include '../function/function.php';
 //hapus data
 if (isset($_GET['id_buku'])) {
     $id_buku = $_GET['id_buku'];
-    $query = delete("buku", "id_buku" ,"$id_buku");
-   
-    if($query) {
-      echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
+    $query = delete("buku", "id_buku", "$id_buku");
+
+    if ($query) {
+        echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
+    } else {
+        echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
     }
-    else {
-      echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
-    }
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,9 +32,7 @@ if (isset($_GET['id_buku'])) {
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -52,7 +49,7 @@ if (isset($_GET['id_buku'])) {
         <?php include("sidebar.php") ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-        <?php include("topbar.php") ?>
+            <?php include("topbar.php") ?>
             <!-- Main Content -->
             <div id="content">
                 <!-- Back End Gita Kartika Pariwara -->
@@ -110,37 +107,32 @@ if (isset($_GET['id_buku'])) {
                                         <!-- Gita -->
                                         <?php
 
-                                    $ambil = read('buku', 'id_buku');
-                                    $no = 1;
-                                    while ($data = mysqli_fetch_assoc($ambil)) {
-                                    ?>
-                                        <tr>
-                                            <td><?= $no;
-                                                $no++ ?></td>
-                                            <td><?= $data['id_buku'] ?></td>
-                                            <td><?= $data['penulis'] ?></td>
-                                            <td><?= $data['tahun'] ?></td>
-                                            <td><?= $data['judul'] ?></td>
-                                            <td><?= $data['kota'] ?></td>
-                                            <td><?= $data['penerbit'] ?></td>
-                                            <td>
-                                                <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>"
-                                                    alt="foto" style="width:175px">
-                                            </td>
-                                            <td><?= $data['sinopsis'] ?></td>
-                                            <td><?= $data['stok'] ?></td>
-                                            <td colspan="2">
-                                                <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
-                                                    class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary"
-                                                    role="button"></a>
-                                                <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
-                                                    class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button"
-                                                    onclick="return confirm('Are you sure want to delete this?')"></a>
-                                            </td>
-                                        </tr>
+                                        $ambil = read('buku', 'id_buku');
+                                        $no = 1;
+                                        while ($data = mysqli_fetch_assoc($ambil)) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $no;
+                                                    $no++ ?></td>
+                                                <td><?= $data['id_buku'] ?></td>
+                                                <td><?= $data['penulis'] ?></td>
+                                                <td><?= $data['tahun'] ?></td>
+                                                <td><?= $data['judul'] ?></td>
+                                                <td><?= $data['kota'] ?></td>
+                                                <td><?= $data['penerbit'] ?></td>
+                                                <td>
+                                                    <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:175px">
+                                                </td>
+                                                <td><?= $data['sinopsis'] ?></td>
+                                                <td><?= $data['stok'] ?></td>
+                                                <td colspan="2">
+                                                    <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
+                                                    <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
+                                                </td>
+                                            </tr>
                                         <?php
-                                    }
-                                    ?>
+                                        }
+                                        ?>
 
                                     </tbody>
                                 </table>
@@ -156,7 +148,7 @@ if (isset($_GET['id_buku'])) {
         </div>
         <!-- End of Content Wrapper -->
     </div>
-    
+
     <!-- End of Page Wrapper -->
 
 
@@ -177,9 +169,7 @@ if (isset($_GET['id_buku'])) {
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
-    <!-- Link Icon Ionic-->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
