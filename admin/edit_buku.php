@@ -97,7 +97,8 @@ include '../function/function.php';
                                 <div class="mb-3">
                                     <label for="" class="form-label">Cover</label> <br>
                                     <img class="img-thumbnail" src="../foto/<?= $data['cover']?>" alt="foto" style = "width:170px">
-                                    <input type="file" class="form-control" name="cover">
+                                    <input type="file" class="form-control" name="cover" >
+                                    <input type="hidden" class="form-control" name="cover_old"  value="<?php echo $data['cover'] ?>">
 
                                 </div>
                                 <div class="mb-3">
@@ -111,7 +112,7 @@ include '../function/function.php';
                                     <input type="number" class="form-control" name="stok" id="" value="<?php echo $data['stok'] ?>">
                                 </div>
 
-                                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
                             </form>
 
            

@@ -21,6 +21,7 @@ function edit($table, $col, $id) {
     global $db;
     $query = "SELECT * FROM $table WHERE $col = $id ";
     $cek = mysqli_query($db, $query);
+    //var_dump($query);
     return $cek;
 }
 
@@ -29,6 +30,7 @@ function update($tabel, $value, $kolomkey, $valuekey){
     global $db;
     $query = "UPDATE  " . $tabel . " set " . $value . " where $kolomkey = $valuekey";
     $cek = mysqli_query($db, $query);
+   // var_dump($query);
     return $cek;
 }
 

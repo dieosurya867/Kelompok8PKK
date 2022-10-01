@@ -7,14 +7,15 @@ include '../function/function.php';
 //hapus data
 if (isset($_GET['id_buku'])) {
     $id_buku = $_GET['id_buku'];
-    $query = delete("buku", "id_buku", "$id_buku");
-
-    if ($query) {
-        echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
-    } else {
-        echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
+    $query = delete("buku", "id_buku" ,"$id_buku");
+   
+    if($query) {
+      echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
     }
-}
+    else {
+      echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +32,9 @@ if (isset($_GET['id_buku'])) {
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -108,8 +111,8 @@ if (isset($_GET['id_buku'])) {
                                     $no = 1;
                                     while ($data = mysqli_fetch_assoc($ambil)) {
                                     ?>
-                                        <tr>
-                                            <td><?= $no;
+                                    <tr>
+                                        <td><?= $no;
                                                 $no++ ?></td>
                                             <td><?= $data['id_buku'] ?></td>
                                             <td><?= $data['penulis'] ?></td>
@@ -165,7 +168,8 @@ if (isset($_GET['id_buku'])) {
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

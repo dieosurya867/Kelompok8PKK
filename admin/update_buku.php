@@ -1,32 +1,63 @@
 <?php
+session_start();
 include '../function/config.php';
 include '../function/function.php';
 
-// Gita
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Gita Kartika
+if (isset($_POST['submit'])) {
     $id_buku= htmlspecialchars($_POST["id_buku"]);
     $penulis=$_POST['penulis'];
     $tahun=$_POST['tahun'];
     $judul=$_POST['judul'];
     $kota=$_POST['kota'];
     $penerbit=$_POST['penerbit'];
-    $file = $_FILES['cover']['name'];
-    $tmp_name = $_FILES['cover']['tmp_name'];
-    move_uploaded_file($tmp_name, "../foto/". $file);
     $sinopsis=$_POST['sinopsis'];
     $stok=$_POST['stok'];
-    // var_dump($id_buku); die;
-    $value = "penulis='$penulis', tahun='$tahun', judul='$judul', kota='$kota', penerbit='$penerbit', cover='$file', sinopsis='$sinopsis', stok='$stok'";
+    $new_image = $_FILES['cover']['name'];
+    $old_image = $_POST['cover_old'];
+  
+// Gita 
+    if($new_image != '') 
+    {
+        $update_filename = $_FILES['cover']['name'];
+    }else 
+    {
+        $update_filename = $old_image;
+    }
 
-    $cekquery = update("buku", $value , "id_buku", "$id_buku");
-   // var_dump($cekquery); die;
-    
-    if($cekquery) {
-       // echo "<div class='alert alert-info'> Data berhasil diupdate.</div>";
-       echo "<script>window.location.href='databuku.php'</script>";
-    }
-    else {
-        echo "<div class='alert alert-danger'>Data Gagal diupdate !</div>";
-    }
+    $value = "penulis='$penulis', tahun='$tahun', judul='$judul', kota='$kota', penerbit='$penerbit', cover='$update_filename', sinopsis='$sinopsis', stok='$stok'";
+    $cekquery = update("buku", $value, "id_buku", "$id_buku");
+   // var_dump($value); die;
+
+//  Gita
+ 
+   if($_FILES['cover']['name'] != '')
+    {
+        if(file_exists("../foto/" . $_FILES['cover']['name']))
+        {
+            $filename = $_FILES['cover']['name'];
+            $_SESSION['status'] = "Foto sudah ada " .$filename;
+            echo "<script>window.location.href='databuku.php'</script>";
         }
-?>
+    }
+    else{
+       
+        if($cekquery)
+        {
+            if($_FILES['cover']['name'] != '')
+            {
+                move_uploaded_file($_FILES['cover']['tmp_name'], "foto/".$_FILES['cover']['name']);
+                unlink("foto/".$old_image);
+            }
+            echo "<div class='alert alert-info'> Data berhasil diupdate.</div>";
+            echo "<script>window.location.href='databuku.php'</script>";
+               
+        }
+        else
+        {
+            echo "<div class='alert alert-danger'>Data Gagal diupdate !</div>";
+            echo "<script>window.location.href='databuku.php'</script>";
+        }
+    }
+}
+    ?>
