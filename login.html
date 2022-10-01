@@ -8,14 +8,14 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/login.css" />
-    <title>Sign in & Sign up Form</title>
+    <title>Petugas & Siswa Login Form</title>
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
           <form action="#" class="sign-in-form">
-            <h2 class="title">Sign in</h2>
+            <h2 class="title">Petugas</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Username" />
@@ -27,16 +27,12 @@
             <input type="submit" value="Login" class="btn solid" />
           </form>
           <form action="#" class="sign-up-form">
-            <h2 class="title">Sign up</h2>
+            <h2 class="title">Siswa</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="NIS" />
             </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <input type="submit" class="btn" value="Login" />
           </form>
         </div>
       </div>
@@ -44,29 +40,24 @@
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h3 style="margin-right: 110px">Siswa Baru ?</h3>
-            <p style="margin-right: 120px">
-              Siswa Baru ?, Mau Pinjam Buku ?<br />Daftar Dulu Yuk!
-            </p>
             <button
               class="btn transparent"
-              style="margin-right: 120px; margin-bottom: 10px"
+              style="margin-right: 175px; margin-bottom: 5px"
               id="sign-up-btn"
             >
-              Sign up
+              Siswa
             </button>
           </div>
           <img src="img/login.svg" class="image" alt="" />
         </div>
         <div class="panel right-panel">
           <div class="content">
-            <h3>Sudah Punya Akun ?</h3>
             <button
               class="btn transparent"
               style="margin-top: 10px"
               id="sign-in-btn"
             >
-              Sign in
+              Petugas
             </button>
           </div>
           <img src="img/singup.svg" class="image" alt="" />
