@@ -133,7 +133,6 @@ if (isset($_GET['id_buku'])) {
 
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
