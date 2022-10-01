@@ -24,44 +24,43 @@
 <!-- front-end - Dieo -->
 
 <body id="page-top">
-  <?php include("sidebar.php") ?>
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
+    <?php include("sidebar.php") ?>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <?php include("topbar.php") ?>
 
 
-    <!-- End of Topbar -->
+      <!-- End of Topbar -->
 
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
 
-      <!-- 404 Error Text -->
-      <div class="text-center">
-        <div class="error mx-auto" data-text="error">500</div>
-        <img class="mx-auto" width="300" height="300" src="../img/error.svg" alt="">
-        <p class="lead text-gray-800 mb-5">Maaf Terjadi Kesalahan</p>
-        <!-- teks error ini tolong diganti yang sesuai ya  -->
-        <p class="text-gray-500 mb-0">Telah Terjadi Gangguan Terhadap Server Kami
-          Kami Akan Segera Memperbaiki Nya Untuk Sementara Anda Bisa
-        </p>
-        <a href="index.html">&larr; Kembali Ke Halaman Utama</a>
+        <!-- 404 Error Text -->
+        <div class="text-center">
+          <div class="error mx-auto" data-text="error">500</div>
+          <img class="mx-auto" width="300" height="300" src="../img/error.svg" alt="">
+          <p class="lead text-gray-800 mb-5">Maaf Terjadi Kesalahan</p>
+          <!-- teks error ini tolong diganti yang sesuai ya  -->
+          <p class="text-gray-500 mb-0">Telah Terjadi Gangguan Terhadap Server Kami
+            Kami Akan Segera Memperbaiki Nya Untuk Sementara Anda Bisa
+          </p>
+          <a href="index.html">&larr; Kembali Ke Halaman Utama</a>
+        </div>
+
       </div>
+      <!-- /.container-fluid -->
+      <!-- End of Footer --><?php include("footer.php") ?>
 
     </div>
-    <!-- /.container-fluid -->
+    <!-- End of Main Content -->
 
-  </div>
-  <!-- End of Main Content -->
+    <!-- Footer -->
 
-  <!-- Footer -->
-  <footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-      <div class="copyright text-center my-auto">
-        <span>Copyright &copy; Gita Kartika - Dieo Surya Kelompok 8</span>
-      </div>
-    </div>
-  </footer>
-  <!-- End of Footer -->
+    <!-- End of Footer -->
 
   </div>
   <!-- End of Content Wrapper -->

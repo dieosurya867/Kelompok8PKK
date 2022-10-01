@@ -1,10 +1,10 @@
 <?php
-
 include "function/config.php";
 include "function/function.php";
 session_start();
 
 // back-end login dieo
+
 if (isset($_POST['loginAdmin'])) {
     $nama = $_POST['nama'];
     $password = $_POST['password'];
@@ -12,13 +12,9 @@ if (isset($_POST['loginAdmin'])) {
     $ambil = loginPetugas("petugas", "nama", $nama);
     $data = mysqli_fetch_assoc($ambil);
 
-
     if ($data) {
-        //jika username terdaftar
-        //cek password sesuai atau tidak
+
         if ($password == $data['password']) {
-            //jika password sesuai
-            //buat session
 
             $_SESSION['nama'] = $data['nama'];
             echo "<script>alert('Selamat Datang Admin')</script>";
