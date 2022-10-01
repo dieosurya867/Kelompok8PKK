@@ -16,8 +16,11 @@ include '../function/function.php';
     <title>Tambah Data Buku</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -28,15 +31,14 @@ include '../function/function.php';
 </head>
 
 <body id="page-top">
-    <?php include("sidebar.php") ?>
-
     <!-- Front End & Back End Gita Kartika Pariwara -->
     <!-- Page Wrapper -->
     <div id="wrapper">
+        <?php include("sidebar.php") ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
+            <?php include("topbar.php") ?>
             <!-- Main Content -->
             <div id="content">
 
@@ -56,22 +58,26 @@ include '../function/function.php';
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="" class="form-label">ID Buku</label>
-                                    <input type="text" class="form-control" name="id_buku" id="" placeholder="Masukkan ID Buku">
+                                    <input type="text" class="form-control" name="id_buku" id=""
+                                        placeholder="Masukkan ID Buku">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penulis</label>
-                                    <input type="text" class="form-control" name="penulis" id="" placeholder="Masukkan nama penulis...">
+                                    <input type="text" class="form-control" name="penulis" id=""
+                                        placeholder="Masukkan nama penulis...">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tahun</label>
-                                    <input type="text" class="form-control" name="tahun" id="" placeholder="Masukkan tahun buku...">
+                                    <input type="text" class="form-control" name="tahun" id=""
+                                        placeholder="Masukkan tahun buku...">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Judul</label>
-                                    <input type="text" class="form-control" name="judul" id="" placeholder="Masukkan judul buku...">
+                                    <input type="text" class="form-control" name="judul" id=""
+                                        placeholder="Masukkan judul buku...">
 
                                 </div>
                                 <div class="mb-3">
@@ -81,7 +87,8 @@ include '../function/function.php';
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Penerbit</label>
-                                    <input type="text" class="form-control" name="penerbit" id="" placeholder="Masukkan nama penerbit buku...">
+                                    <input type="text" class="form-control" name="penerbit" id=""
+                                        placeholder="Masukkan nama penerbit buku...">
 
                                 </div>
                                 <div class="mb-3">
@@ -90,7 +97,8 @@ include '../function/function.php';
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Sinopsis</label>
-                                    <input type="text" class="form-control" name="sinopsis" id="" placeholder="Masukkan sinopsis buku...">
+                                    <input type="text" class="form-control" name="sinopsis" id=""
+                                        placeholder="Masukkan sinopsis buku...">
 
                                 </div>
                                 <div class="mb-3">
@@ -110,19 +118,7 @@ include '../function/function.php';
 
             </div>
             <!-- End of Main Content -->
-
-
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Gita Kartika - Dieo Surya Kelompok 8</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
+            <?php include("footer.php") ?>
         </div>
         <!-- End of Content Wrapper -->
 
@@ -135,7 +131,8 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -178,6 +175,7 @@ include '../function/function.php';
             echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
         }
     } ?>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -194,6 +192,10 @@ include '../function/function.php';
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
+
+    <!-- Link Icon Ionic-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 
