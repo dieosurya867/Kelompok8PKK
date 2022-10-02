@@ -18,7 +18,9 @@ include '../function/function.php';
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -56,22 +58,26 @@ include '../function/function.php';
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="" class="form-label">NIS</label>
-                                    <input type="text" class="form-control" name="nis" id="" placeholder="Masukkan NIS siswa">
+                                    <input type="text" class="form-control" name="nis" id=""
+                                        placeholder="Masukkan NIS siswa">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama_siswa" id="" placeholder="Masukkan Nama Siswa">
+                                    <input type="text" class="form-control" name="nama_siswa" id=""
+                                        placeholder="Masukkan Nama Siswa">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Jenis Kelamin</label> <br>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio1" value="L">
+                                        <input class="form-check-input" type="radio" name="jeniskelamin"
+                                            id="inlineRadio1" value="L">
                                         <label class="form-check-label" for="inlineRadio1">Laki - laki</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio2" value="P">
+                                        <input class="form-check-input" type="radio" name="jeniskelamin"
+                                            id="inlineRadio2" value="P">
                                         <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                                     </div>
 
@@ -79,25 +85,26 @@ include '../function/function.php';
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" id="" placeholder="Masukkan Alamat">
+                                    <input type="text" class="form-control" name="alamat" id=""
+                                        placeholder="Masukkan Alamat">
                                 </div>
                                 <div class="mb-3">
 
-                                    <label for="pilihkelas">Kelas</label>
+                                        <label for="pilihkelas">Kelas</label>
 
-                                    <select class="form-control" name="kelas">
-                                        <option value="">--Pilih Kelas--</option>
-                                        <?php
-                                        $get_data = read('kelas', 'id_kelas');
-                                        while ($data = mysqli_fetch_array($get_data)) {
-                                        ?>
-                                            <option value="<?php echo $data['id_kelas']; ?>">
-                                                <?php echo $data['nama_kelas']; ?>
-                                            </option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
+                                            <select class="form-control" name="kelas">
+                                                <option value="">--Pilih Kelas--</option>
+                                                <?php
+                                                    $get_data = read('kelas','id_kelas');
+                                                    while ($data = mysqli_fetch_array($get_data)) {
+                                                ?>
+                                                <option value="<?php echo $data['id_kelas'];?>">
+                                                    <?php echo $data['nama_kelas'];?>
+                                                </option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
 
 
                                 </div>
@@ -121,7 +128,29 @@ include '../function/function.php';
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Gita -->
 
@@ -159,6 +188,11 @@ include '../function/function.php';
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
+
+    <!-- Link Icon Ionic-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
