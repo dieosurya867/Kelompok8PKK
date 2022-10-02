@@ -2,7 +2,14 @@
 include '../function/config.php';
 include '../function/function.php';
 
-
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +42,12 @@ include '../function/function.php';
     <!-- Front End & Back End Gita Kartika Pariwara -->
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <?php include ("sidebar.php")?>
+        <?php include("sidebar.php") ?>
 
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <?php include ("topbar.php")?>
+            <?php include("topbar.php") ?>
             <!-- Main Content -->
             <div id="content">
 
@@ -58,44 +65,38 @@ include '../function/function.php';
                         </div>
                         <div class="card-body">
                             <?php
-                              if (isset($_GET['id_kelas'])) {
+                            if (isset($_GET['id_kelas'])) {
                                 $id_kelas = $_GET["id_kelas"];
                                 $edit = edit("kelas", "id_kelas", "$id_kelas");
                                 $data = mysqli_fetch_assoc($edit);
-                              } 
+                            }
 
-                              
-                                    // Proses update data kelas // Gita Kartika
-                                    if (isset($_POST['update'])) {
-                                        $id_kelas= htmlspecialchars($_POST["id_kelas"]);
-                                        $nama_kelas=$_POST['nama_kelas'];
-                                    
-                                        //$value = "kelas='$nama_kelas'";
-                                        $cekquery = update("kelas", "nama_kelas='$nama_kelas'", "id_kelas", "$id_kelas");
-                                        //var_dump($cekquery); die;
 
-                                        if($cekquery)
-                                        {
-                                            echo "<div class='alert alert-info'> Data berhasil diupdate.</div>";
-                                            echo "<script>window.location.href='datakelas.php'</script>";
-                                            
-                                        }else {
-                                            echo "<div class='alert alert-danger'>Data gagal diupdate</div>";
-                                        }
-                                        
+                            // Proses update data kelas // Gita Kartika
+                            if (isset($_POST['update'])) {
+                                $id_kelas = htmlspecialchars($_POST["id_kelas"]);
+                                $nama_kelas = $_POST['nama_kelas'];
 
-                                    }
-                             ?>
-                            <form action="" method="POST" >
+                                //$value = "kelas='$nama_kelas'";
+                                $cekquery = update("kelas", "nama_kelas='$nama_kelas'", "id_kelas", "$id_kelas");
+                                //var_dump($cekquery); die;
+
+                                if ($cekquery) {
+                                    echo "<div class='alert alert-info'> Data berhasil diupdate.</div>";
+                                    echo "<script>window.location.href='datakelas.php'</script>";
+                                } else {
+                                    echo "<div class='alert alert-danger'>Data gagal diupdate</div>";
+                                }
+                            }
+                            ?>
+                            <form action="" method="POST">
                                 <div class="mb-3">
                                     <label for="" class="form-label">ID Kelas</label>
-                                    <input type="text" class="form-control" name="id_kelas"
-                                        value="<?php echo $data['id_kelas'] ?>" readonly>
+                                    <input type="text" class="form-control" name="id_kelas" value="<?php echo $data['id_kelas'] ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Kelas</label>
-                                    <input type="text" class="form-control" name="nama_kelas" id=""
-                                        value="<?php echo $data['nama_kelas'] ?>">
+                                    <input type="text" class="form-control" name="nama_kelas" id="" value="<?php echo $data['nama_kelas'] ?>">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary" name="update">Simpan</button>
@@ -114,7 +115,7 @@ include '../function/function.php';
 
 
             <!-- Footer -->
-            <?php include ("footer.php")?>
+            <?php include("footer.php") ?>
             <!-- End of Footer -->
 
         </div>
@@ -129,8 +130,7 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -150,7 +150,7 @@ include '../function/function.php';
 
     <!-- Gita -->
 
-   
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

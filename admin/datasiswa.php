@@ -1,7 +1,14 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-$page = 'murid';
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
 // Gita 
 //hapus data
 if (isset($_GET['nis'])) {
@@ -52,9 +59,35 @@ if (isset($_GET['nis'])) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading  Gita-->
-                    <h1 class="h3 mb-2 text-gray-800">Data Siswa</h1>
-                    <p class="mb-4">Berikut ini adalah data siswa </p>
+                    <div class="row">
+                        <!-- Page Heading  Gita-->
+                        <!-- Back End Count Data Gita Kartika -->
+                        <!-- Data Anggota Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4 mr-3">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Data Siswa
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $query = read('siswa', 'nis');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> " . $row . "</h1>";
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-users-between-lines fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- DataTales Example Gita-->
                     <div class="card shadow mb-4">

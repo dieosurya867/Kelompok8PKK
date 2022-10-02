@@ -3,6 +3,13 @@
 include "function/function.php";
 session_start();
 
+// back-end keamanan akses tampilan dieo
+if (isset($_SESSION['nama'])) {
+    header("location: ../admin/index.php");
+} elseif (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
+
 // back-end login dieo
 
 if (isset($_POST['loginAdmin'])) {
@@ -18,7 +25,7 @@ if (isset($_POST['loginAdmin'])) {
 
             $_SESSION['nama'] = $data['nama'];
             echo "<script>alert('Selamat Datang Admin')</script>";
-            echo "<script>window.location.href='admin/databuku.php'</script>";
+            echo "<script>window.location.href='admin/index.php'</script>";
         } else {
             echo "<script>alert('Maaf, Login Gagal, Password anda tidak sesuai!');document.location='login.php'</script>";
         }
@@ -36,7 +43,7 @@ if (isset($_POST['loginSNIS'])) {
     // var_dump($data);
     if ($data) {
 
-        $_SESSION['nama'] = $data['nama'];
+        $_SESSION['nis'] = $data['nis'];
         echo "<script>alert('Selamat Datang Adek!!')</script>";
         echo "<script>window.location.href='siswa/index.php'</script>";
     } else {

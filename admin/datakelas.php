@@ -1,7 +1,14 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
 // Gita 
 //hapus data
 if (isset($_GET['id_kelas'])) {
@@ -53,9 +60,33 @@ if (isset($_GET['id_kelas'])) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading  Gita-->
-                    <h1 class="h3 mb-2 text-gray-800">Data Kelas</h1>
-                    <p class="mb-4">Berikut ini adalah daftar kelas </p>
+                    <!-- Page Heading  Dieo-->
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Data Kelas
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $query = read('kelas', 'id_kelas');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> " . $row . "</h1>";
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-book-bookmark fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- DataTales Example Gita-->
                     <div class="card shadow mb-4">

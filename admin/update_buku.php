@@ -3,6 +3,15 @@ session_start();
 include '../function/config.php';
 include '../function/function.php';
 
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
+
 // Gita Kartika
 if (isset($_POST['submit'])) {
     $id_buku= htmlspecialchars($_POST["id_buku"]);
@@ -60,4 +69,3 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-    ?>

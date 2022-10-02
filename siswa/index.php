@@ -2,6 +2,17 @@
 include '../function/config.php';
 include '../function/function.php';
 
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nis'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nama'])) {
+    header('location: ../admin/index.php');
+}
+
+
+
 // Gita 
 //hapus data
 if (isset($_GET['id_buku'])) {
@@ -124,8 +135,8 @@ if (isset($_GET['id_buku'])) {
                                                 <td><?= $data['sinopsis'] ?></td>
                                                 <td><?= $data['stok'] ?></td>
                                                 <td colspan="2">
-                                                    <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
-                                                    <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
+                                                    <a style="font-size: 10px;" href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-success" role="button"> Preorder</a>
+
                                                 </td>
                                             </tr>
                                         <?php

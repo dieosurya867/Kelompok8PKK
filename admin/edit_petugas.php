@@ -1,7 +1,14 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -20,9 +27,7 @@ include '../function/function.php';
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -37,12 +42,12 @@ include '../function/function.php';
     <!-- Front End & Back End Gita Kartika Pariwara -->
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <?php include ("sidebar.php")?>
+        <?php include("sidebar.php") ?>
 
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <?php include ("topbar.php")?>
+            <?php include("topbar.php") ?>
             <!-- Main Content -->
             <div id="content">
 
@@ -60,72 +65,60 @@ include '../function/function.php';
                         </div>
                         <div class="card-body">
                             <?php
-                              if (isset($_GET['nip'])) {
+                            if (isset($_GET['nip'])) {
                                 $nip = $_GET["nip"];
                                 $edit = edit("petugas", "nip", "$nip");
                                 $data = mysqli_fetch_assoc($edit);
-                              } 
+                            }
 
-                              
-                                    // Proses update data petugas // Gita Kartika
-                                    if (isset($_POST['update'])) {
-                                        $nis= htmlspecialchars($_POST["nip"]);
-                                        $nama = $_POST['nama'];
-                                        $jeniskelamin = $_POST['jeniskelamin'];
-                                        $alamat = $_POST['alamat'];
-                                        $password = $_POST['password'];
-                                    
-                                        $value = "nama='$nama', jenis_kelamin='$jeniskelamin', alamat='$alamat', password='$password'";
-                                        $cekquery = update("petugas", $value, "nip", $nip);
-                                       //var_dump($value); die;
 
-                                        if($cekquery)
-                                        {
-                                            echo "<div class='alert alert-info'> Data berhasil diupdate.</div>";
-                                            echo "<script>window.location.href='datapetugas.php'</script>";
-                                            
-                                        }else {
-                                            echo "<div class='alert alert-danger'>Data gagal diupdate</div>";
-                                        }
-                                        
+                            // Proses update data petugas // Gita Kartika
+                            if (isset($_POST['update'])) {
+                                $nis = htmlspecialchars($_POST["nip"]);
+                                $nama = $_POST['nama'];
+                                $jeniskelamin = $_POST['jeniskelamin'];
+                                $alamat = $_POST['alamat'];
+                                $password = $_POST['password'];
 
-                                    }
-                             ?>
+                                $value = "nama='$nama', jenis_kelamin='$jeniskelamin', alamat='$alamat', password='$password'";
+                                $cekquery = update("petugas", $value, "nip", $nip);
+                                //var_dump($value); die;
+
+                                if ($cekquery) {
+                                    echo "<div class='alert alert-info'> Data berhasil diupdate.</div>";
+                                    echo "<script>window.location.href='datapetugas.php'</script>";
+                                } else {
+                                    echo "<div class='alert alert-danger'>Data gagal diupdate</div>";
+                                }
+                            }
+                            ?>
                             <form action="" method="POST">
                                 <div class="mb-3">
                                     <label for="" class="form-label">NIP</label>
-                                    <input type="text" class="form-control" name="nip"
-                                        value="<?php echo $data['nip'] ?>" readonly>
+                                    <input type="text" class="form-control" name="nip" value="<?php echo $data['nip'] ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama" id=""
-                                        value="<?php echo $data['nama'] ?>">
+                                    <input type="text" class="form-control" name="nama" id="" value="<?php echo $data['nama'] ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Jenis Kelamin</label> <br>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jeniskelamin"
-                                            id="inlineRadio1" value="L"
-                                            <?php echo ($data['jenis_kelamin'] =='L') ?'checked':'' ?>>
+                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio1" value="L" <?php echo ($data['jenis_kelamin'] == 'L') ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="inlineRadio1">Laki - laki</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jeniskelamin"
-                                            id="inlineRadio2" value="P"
-                                            <?php echo ($data['jenis_kelamin'] =='P') ?'checked':''?>>
+                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio2" value="P" <?php echo ($data['jenis_kelamin'] == 'P') ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" id=""
-                                        value="<?php echo $data['alamat'] ?>">
+                                    <input type="text" class="form-control" name="alamat" id="" value="<?php echo $data['alamat'] ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Password</label>
-                                    <input type="password" required class="form-control" name="password" id=""
-                                        value="<?php echo $data['password'] ?>">
+                                    <input type="password" required class="form-control" name="password" id="" value="<?php echo $data['password'] ?>">
                                 </div>
 
 
@@ -145,7 +138,7 @@ include '../function/function.php';
 
 
             <!-- Footer -->
-            <?php include ("footer.php")?>
+            <?php include("footer.php") ?>
             <!-- End of Footer -->
 
         </div>
@@ -160,8 +153,7 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

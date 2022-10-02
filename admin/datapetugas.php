@@ -1,7 +1,14 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
 // Gita 
 //hapus data
 if (isset($_GET['nip'])) {
@@ -19,18 +26,17 @@ if (isset($_GET['nip'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Siswa</title>
 
-     <!-- Custom fonts for this template -->
-     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -38,13 +44,14 @@ if (isset($_GET['nip'])) {
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
+
 <body id="page-top">
-     <!-- Page Wrapper -->
-     <div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
         <?php include("sidebar.php") ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-        <?php include("topbar.php") ?>
+            <?php include("topbar.php") ?>
             <!-- Main Content -->
             <div id="content">
                 <!-- Back End Gita Kartika Pariwara -->
@@ -52,9 +59,33 @@ if (isset($_GET['nip'])) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading  Gita-->
-                    <h1 class="h3 mb-2 text-gray-800">Data Petugas</h1>
-                    <p class="mb-4">Berikut ini adalah data petugas perpustakaan </p>
+                    <!-- Page Heading  Dieo-->
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Data Petugas
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $query = read('petugas', 'nip');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> " . $row . "</h1>";
+                                                ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-book fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- DataTales Example Gita-->
                     <div class="card shadow mb-4">
@@ -94,30 +125,26 @@ if (isset($_GET['nip'])) {
                                         <!-- Gita -->
                                         <?php
 
-                                    $ambil = read('petugas', 'nip');
-                                    $no = 1;
-                                    while ($data = mysqli_fetch_assoc($ambil)) {
-                                    ?>
-                                        <tr>
-                                            <td><?= $no;
-                                                $no++ ?></td>
-                                            <td><?= $data['nip'] ?></td>
-                                            <td><?= $data['nama'] ?></td>
-                                            <td><?= $data['jenis_kelamin'] ?></td>
-                                            <td><?= $data['alamat'] ?></td>
-                                            <td><?= $data['password'] ?></td>
-                                            <td colspan="2">
-                                                <a href='edit_petugas.php?nip=<?php echo htmlspecialchars($data['nip']); ?>'
-                                                    class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary"
-                                                    role="button"></a>
-                                                <a href='datapetugas.php?nip=<?php echo htmlspecialchars($data['nip']); ?>'
-                                                    class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button"
-                                                    onclick="return confirm('Are you sure want to delete this?')"></a>
-                                            </td>
-                                        </tr>
+                                        $ambil = read('petugas', 'nip');
+                                        $no = 1;
+                                        while ($data = mysqli_fetch_assoc($ambil)) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $no;
+                                                    $no++ ?></td>
+                                                <td><?= $data['nip'] ?></td>
+                                                <td><?= $data['nama'] ?></td>
+                                                <td><?= $data['jenis_kelamin'] ?></td>
+                                                <td><?= $data['alamat'] ?></td>
+                                                <td><?= $data['password'] ?></td>
+                                                <td colspan="2">
+                                                    <a href='edit_petugas.php?nip=<?php echo htmlspecialchars($data['nip']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
+                                                    <a href='datapetugas.php?nip=<?php echo htmlspecialchars($data['nip']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
+                                                </td>
+                                            </tr>
                                         <?php
-                                    }
-                                    ?>
+                                        }
+                                        ?>
 
                                     </tbody>
                                 </table>
@@ -133,11 +160,11 @@ if (isset($_GET['nip'])) {
         </div>
         <!-- End of Content Wrapper -->
     </div>
-    
-    <!-- End of Page Wrapper -->
-    
 
-<!-- Bootstrap core JavaScript-->
+    <!-- End of Page Wrapper -->
+
+
+    <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -157,4 +184,5 @@ if (isset($_GET['nip'])) {
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

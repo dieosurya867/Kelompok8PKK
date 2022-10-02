@@ -1,6 +1,15 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +27,7 @@ include '../function/function.php';
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -58,26 +65,22 @@ include '../function/function.php';
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="" class="form-label">NIP</label>
-                                    <input type="text" class="form-control" name="nip" id=""
-                                        placeholder="Masukkan NIP petugas">
+                                    <input type="text" class="form-control" name="nip" id="" placeholder="Masukkan NIP petugas">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama_petugas" id=""
-                                        placeholder="Masukkan Nama Petugas">
+                                    <input type="text" class="form-control" name="nama_petugas" id="" placeholder="Masukkan Nama Petugas">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Jenis Kelamin</label> <br>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jeniskelamin"
-                                            id="inlineRadio1" value="L">
+                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio1" value="L">
                                         <label class="form-check-label" for="inlineRadio1">Laki - laki</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jeniskelamin"
-                                            id="inlineRadio2" value="P">
+                                        <input class="form-check-input" type="radio" name="jeniskelamin" id="inlineRadio2" value="P">
                                         <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                                     </div>
 
@@ -85,14 +88,13 @@ include '../function/function.php';
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" id=""
-                                        placeholder="Masukkan Alamat">
+                                    <input type="text" class="form-control" name="alamat" id="" placeholder="Masukkan Alamat">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Password</label>
                                     <input type="password" required class="form-control" name="password">
                                 </div>
-                             
+
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
 
@@ -118,8 +120,7 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -146,7 +147,7 @@ include '../function/function.php';
         $jeniskelamin = $_POST['jeniskelamin'];
         $alamat = $_POST['alamat'];
         $password = htmlspecialchars($_POST['password']);
-      
+
         $add = create("petugas", "nip, nama, jenis_kelamin, alamat, password", "'$nip','$nama','$jeniskelamin', '$alamat', '$password'");
 
         if ($add) {

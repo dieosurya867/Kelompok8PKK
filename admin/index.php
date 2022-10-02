@@ -1,7 +1,15 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-$page = "index";
+
+// back-end keamanan akses tampilan dieo
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
 
 ?>
 <!DOCTYPE html>
