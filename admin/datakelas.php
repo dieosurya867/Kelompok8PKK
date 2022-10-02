@@ -1,6 +1,19 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+
+// Gita 
+//hapus data
+if (isset($_GET['id_kelas'])) {
+    $id_kelas = $_GET['id_kelas'];
+    $query = delete("kelas", "id_kelas", "$id_kelas");
+
+    if ($query) {
+        echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
+    } else {
+        echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +41,11 @@ include '../function/function.php';
      <!-- Page Wrapper -->
      <div id="wrapper">
         <?php include("sidebar.php") ?>
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
         <?php include("topbar.php") ?>
+        
             <!-- Main Content -->
             <div id="content">
                 <!-- Back End Gita Kartika Pariwara -->
@@ -49,69 +64,46 @@ include '../function/function.php';
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <a href="add_buku.php" class="btn btn-primary">
+                                <a href="add_kelas.php" class="btn btn-primary">
                                     Tambah Kelas
                                 </a> <br><br>
 
-                                <table class="table table-bordered" id="dataTable" width="110%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Buku</th>
-                                            <th>Penulis</th>
-                                            <th>Tahun</th>
-                                            <th>Judul</th>
-                                            <th>Kota</th>
-                                            <th>Penerbit</th>
-                                            <th>Cover</th>
-                                            <th>Sinopsis</th>
-                                            <th>Stok</th>
+                                            <th>ID Kelas</th>
+                                            <th>Nama Kelas</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Buku</th>
-                                            <th>Penulis</th>
-                                            <th>Tahun</th>
-                                            <th>Judul</th>
-                                            <th>Kota</th>
-                                            <th>Penerbit</th>
-                                            <th>Cover</th>
-                                            <th>Sinopsis</th>
-                                            <th>Stok</th>
+                                            <th>ID Kelas</th>
+                                            <th>Nama Kelas</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+
                                         <!-- Gita -->
                                         <?php
 
-                                    $ambil = read('buku', 'id_buku');
+                                    $ambil = read('kelas', 'id_kelas');
                                     $no = 1;
                                     while ($data = mysqli_fetch_assoc($ambil)) {
                                     ?>
                                         <tr>
                                             <td><?= $no;
                                                 $no++ ?></td>
-                                            <td><?= $data['id_buku'] ?></td>
-                                            <td><?= $data['penulis'] ?></td>
-                                            <td><?= $data['tahun'] ?></td>
-                                            <td><?= $data['judul'] ?></td>
-                                            <td><?= $data['kota'] ?></td>
-                                            <td><?= $data['penerbit'] ?></td>
-                                            <td>
-                                                <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>"
-                                                    alt="foto" style="width:175px">
-                                            </td>
-                                            <td><?= $data['sinopsis'] ?></td>
-                                            <td><?= $data['stok'] ?></td>
+                                            <td><?= $data['id_kelas'] ?></td>
+                                            <td><?= $data['nama_kelas'] ?></td>
                                             <td colspan="2">
-                                                <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
+                                                <a href='edit_kelas.php?id_kelas=<?php echo htmlspecialchars($data['id_kelas']); ?>'
                                                     class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary"
                                                     role="button"></a>
-                                                <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>'
+                                                <a href='datakelas.php?id_kelas=<?php echo htmlspecialchars($data['id_kelas']); ?>'
                                                     class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button"
                                                     onclick="return confirm('Are you sure want to delete this?')"></a>
                                             </td>
