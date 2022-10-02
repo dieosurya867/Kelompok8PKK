@@ -29,7 +29,9 @@ if (isset($_GET['nis'])) {
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -91,33 +93,31 @@ if (isset($_GET['nis'])) {
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        
+
                                         <!-- Gita -->
                                         <?php
 
-                                        $ambil = read('buku', 'id_buku');
+                                        $ambil = read_join('siswa, kelas','siswa.id_kelas = kelas.id_kelas ', 'nis');
                                         $no = 1;
                                         while ($data = mysqli_fetch_assoc($ambil)) {
                                         ?>
-                                            <tr>
-                                                <td><?= $no;
+                                        <tr>
+                                            <td><?= $no;
                                                     $no++ ?></td>
-                                                <td><?= $data['id_buku'] ?></td>
-                                                <td><?= $data['penulis'] ?></td>
-                                                <td><?= $data['tahun'] ?></td>
-                                                <td><?= $data['judul'] ?></td>
-                                                <td><?= $data['kota'] ?></td>
-                                                <td><?= $data['penerbit'] ?></td>
-                                                <td>
-                                                    <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:175px">
-                                                </td>
-                                                <td><?= $data['sinopsis'] ?></td>
-                                                <td><?= $data['stok'] ?></td>
-                                                <td colspan="2">
-                                                    <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
-                                                    <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
-                                                </td>
-                                            </tr>
+                                            <td><?= $data['nis'] ?></td>
+                                            <td><?= $data['nama'] ?></td>
+                                            <td><?= $data['jenis_kelamin'] ?></td>
+                                            <td><?= $data['alamat'] ?></td>
+                                            <td><?= $data['nama_kelas'] ?></td>
+                                            <td colspan="2">
+                                                <a href='edit_siswa.php?nis=<?php echo htmlspecialchars($data['nis']); ?>'
+                                                    class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary"
+                                                    role="button"></a>
+                                                <a href='datasiswa.php?nis=<?php echo htmlspecialchars($data['nis']); ?>'
+                                                    class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button"
+                                                    onclick="return confirm('Are you sure want to delete this?')"></a>
+                                            </td>
+                                        </tr>
                                         <?php
                                         }
                                         ?>
