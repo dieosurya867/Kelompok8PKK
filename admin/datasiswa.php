@@ -125,7 +125,7 @@ if (isset($_GET['nis'])) {
                 </div>
                 <!-- /.container-fluid -->
             </div>
-            <?php include("footer.php") ?>
+            <?php include("footer.php"); ?>
             <!-- End of Main Content -->
         </div>
         <!-- End of Content Wrapper -->

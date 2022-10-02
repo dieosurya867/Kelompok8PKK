@@ -53,7 +53,7 @@ include '../function/function.php';
                     <div class="row">
 
 
-                    <!-- Back End Count Data Gita Kartika -->
+                        <!-- Back End Count Data Gita Kartika -->
                         <!-- Data Anggota Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -64,12 +64,12 @@ include '../function/function.php';
                                                 Data Siswa
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <?php
-                                                $query = read('siswa','nis');
+                                                <?php
+                                                $query = read('siswa', 'nis');
                                                 $row = mysqli_num_rows($query);
 
-                                                echo "<h1> ".$row."</h1>";
-                                            ?>
+                                                echo "<h1> " . $row . "</h1>";
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -90,12 +90,12 @@ include '../function/function.php';
                                                 Data Petugas
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <?php
-                                                $query = read('petugas','nip');
+                                                <?php
+                                                $query = read('petugas', 'nip');
                                                 $row = mysqli_num_rows($query);
 
-                                                echo "<h1> ".$row."</h1>";
-                                            ?>
+                                                echo "<h1> " . $row . "</h1>";
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -118,12 +118,12 @@ include '../function/function.php';
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                    <?php
-                                                $query = read('buku','id_buku');
-                                                $row = mysqli_num_rows($query);
+                                                        <?php
+                                                        $query = read('buku', 'id_buku');
+                                                        $row = mysqli_num_rows($query);
 
-                                                echo "<h1> ".$row."</h1>";
-                                            ?>
+                                                        echo "<h1> " . $row . "</h1>";
+                                                        ?>
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -151,12 +151,12 @@ include '../function/function.php';
                                                 Data Kelas
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <?php
-                                                $query = read('kelas','id_kelas');
+                                                <?php
+                                                $query = read('kelas', 'id_kelas');
                                                 $row = mysqli_num_rows($query);
 
-                                                echo "<h1> ".$row."</h1>";
-                                            ?>
+                                                echo "<h1> " . $row . "</h1>";
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -177,9 +177,9 @@ include '../function/function.php';
                                                 Data Peminjaman
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <?php
-                                               
-                                            ?>
+                                                <?php
+
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -200,7 +200,9 @@ include '../function/function.php';
                                                 Data Pengembalian
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                
+                                                <?php
+
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -221,7 +223,9 @@ include '../function/function.php';
                                                 Buku Dipinjam
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                
+                                                <?php
+
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -242,7 +246,9 @@ include '../function/function.php';
                                                 Buku Dikembalikan
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                
+                                                <?php
+
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
