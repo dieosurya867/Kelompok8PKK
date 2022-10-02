@@ -36,6 +36,15 @@ function edit($table, $col, $id)
     return $cek;
 }
 
+function edit_join($table, $condition, $colkey, $id)
+{
+    global $db;
+    $query = "SELECT * FROM $table WHERE $condition AND $colkey = $id ";
+    $cek = mysqli_query($db, $query);
+    //var_dump($query);
+    return $cek;
+}
+
 
 function update($tabel, $value, $kolomkey, $valuekey)
 {
