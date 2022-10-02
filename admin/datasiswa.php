@@ -1,7 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+$page = 'murid';
 // Gita 
 //hapus data
 if (isset($_GET['nis'])) {

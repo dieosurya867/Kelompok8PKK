@@ -1,6 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+$page = "index";
 
 ?>
 <!DOCTYPE html>
