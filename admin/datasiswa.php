@@ -1,6 +1,20 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+
+// Gita 
+//hapus data
+if (isset($_GET['nis'])) {
+    $nis = $_GET['nis'];
+    $query = delete("siswa", "nis", "$nis");
+
+    if ($query) {
+        echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
+    } else {
+        echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -49,38 +63,30 @@ include '../function/function.php';
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <a href="add_buku.php" class="btn btn-primary">
+                                <a href="add_siswa.php" class="btn btn-primary">
                                     Tambah Anggota
                                 </a> <br><br>
 
-                                <table class="table table-bordered" id="dataTable" width="110%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Buku</th>
-                                            <th>Penulis</th>
-                                            <th>Tahun</th>
-                                            <th>Judul</th>
-                                            <th>Kota</th>
-                                            <th>Penerbit</th>
-                                            <th>Cover</th>
-                                            <th>Sinopsis</th>
-                                            <th>Stok</th>
+                                            <th>NIS</th>
+                                            <th>Nama</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Alamat</th>
+                                            <th>Kelas</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Buku</th>
-                                            <th>Penulis</th>
-                                            <th>Tahun</th>
-                                            <th>Judul</th>
-                                            <th>Kota</th>
-                                            <th>Penerbit</th>
-                                            <th>Cover</th>
-                                            <th>Sinopsis</th>
-                                            <th>Stok</th>
+                                            <th>NIS</th>
+                                            <th>Nama</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Alamat</th>
+                                            <th>Kelas</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
