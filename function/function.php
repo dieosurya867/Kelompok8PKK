@@ -1,5 +1,5 @@
 <?php
-include '../function/config.php';
+include 'config.php';
 
 // gita
 
