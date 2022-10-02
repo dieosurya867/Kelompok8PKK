@@ -15,33 +15,33 @@ include '../function/function.php';
 
     <title>Edit Data Buku</title>
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+   <!-- Custom fonts for this template -->
+   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    
 </head>
 
 <body id="page-top">
-<?php include ("sidebar.php")?>
 
     <!-- Front End & Back End Gita Kartika Pariwara -->
     <!-- Page Wrapper -->
     <div id="wrapper">
+    <?php include ("sidebar.php")?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+        <?php include("topbar.php") ?>
 
             <!-- Main Content -->
             <div id="content">
-
+    
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -128,13 +128,7 @@ include '../function/function.php';
 
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Gita Kartika - Dieo Surya Kelompok 8</span>
-                    </div>
-                </div>
-            </footer>
+            <?php include("footer.php") ?>
             <!-- End of Footer -->
 
         </div>
@@ -170,6 +164,7 @@ include '../function/function.php';
 
     <!-- Gita -->
 
+   
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

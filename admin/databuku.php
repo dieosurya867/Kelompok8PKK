@@ -2,8 +2,6 @@
 include '../function/config.php';
 include '../function/function.php';
 
-
-
 // Gita 
 //hapus data
 if (isset($_GET['id_buku'])) {
