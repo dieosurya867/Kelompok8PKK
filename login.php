@@ -38,7 +38,7 @@ if (isset($_POST['loginSNIS'])) {
 
         $_SESSION['nama'] = $data['nama'];
         echo "<script>alert('Selamat Datang Adek!!')</script>";
-        echo "<script>window.location.href='admin/databuku.php'</script>";
+        echo "<script>window.location.href='siswa/index.php'</script>";
     } else {
         echo "<script>alert('Maaf, Login Gagal, SNIS anda tidak terdaftar!');document.location='login.php'</script>";
     }
