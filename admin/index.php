@@ -51,6 +51,9 @@ include '../function/function.php';
 
                     <!-- Content Row -->
                     <div class="row">
+
+
+                    <!-- Back End Count Data Gita Kartika -->
                         <!-- Data Anggota Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -58,10 +61,15 @@ include '../function/function.php';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Data Anggota
+                                                Data Siswa
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                $40,000
+                                            <?php
+                                                $query = read('siswa','nis');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> ".$row."</h1>";
+                                            ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -79,10 +87,15 @@ include '../function/function.php';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Data Buku
+                                                Data Petugas
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                $215,000
+                                            <?php
+                                                $query = read('petugas','nip');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> ".$row."</h1>";
+                                            ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -100,12 +113,17 @@ include '../function/function.php';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Data Peminjaman
+                                                Data Buku
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        50%
+                                                    <?php
+                                                $query = read('buku','id_buku');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> ".$row."</h1>";
+                                            ?>
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -130,10 +148,15 @@ include '../function/function.php';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Data Pengembalian
+                                                Data Kelas
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                18
+                                            <?php
+                                                $query = read('kelas','id_kelas');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> ".$row."</h1>";
+                                            ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -151,10 +174,12 @@ include '../function/function.php';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total Buku
+                                                Data Peminjaman
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                50
+                                            <?php
+                                               
+                                            ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -172,10 +197,10 @@ include '../function/function.php';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Buku Dipinjam
+                                                Data Pengembalian
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                30
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -193,10 +218,10 @@ include '../function/function.php';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Sisa Buku
+                                                Buku Dipinjam
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                20
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -217,7 +242,7 @@ include '../function/function.php';
                                                 Buku Dikembalikan
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                10
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
