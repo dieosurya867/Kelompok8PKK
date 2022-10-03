@@ -12,30 +12,13 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- <div id="menu">
-        <ul>
-            <li <?php if ($page == "Home") echo "class='active'"; ?>> <a href="index.php">home</a></li>
-            <li <?php if ($page == "About") echo "class='active'"; ?>><a href="about.php">about</a></li>
-            <li <?php if ($page == "Gallery") echo "class='active'"; ?>><a href="gallery.php">gallery</a></li>
-            <li <?php if ($page == "Contact") echo "class='active'"; ?>><a href="contact.php">contact</a></li>
-        </ul>
-    </div> -->
-    <!-- <li class="nav-item " <?php if ($page == "home") echo "class=' active'"; ?>> <a class="nav-link" href="../admin/index.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a></li>
-    <li class="nav-item " <?php if ($page == "murid") echo "class=' active'"; ?>> <a class="nav-link" href="../admin/datasiswa.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Siswa</span></a></li>
-    <li class="nav-item " <?php if ($page == "book") echo "class=' active'"; ?>> <a class="nav-link" href="../admin/databuku.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i> 
-            <span>Buku</span></a></li> -->
-    <!-- end of menu -->
+    <?php var_dump($page); ?>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active"><a class="nav-link" href="../admin/index.php">
+    <li <?php if ($page == "home") {
+        ?>class="nav-item active" <?php  } else { ?> class="nav-item" <?php } ?>> <a class="nav-link" href="../admin/index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
+            <span>Dashboard</span></a></li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -45,7 +28,13 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+
+
+    <li <?php if ($page == "murid") {
+        ?> class="nav-item active" <?php
+                                } else {
+                                    ?> class="nav-item" <?php
+                                                    } ?>>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <i class="fa-solid fa-graduation-cap"></i>
             <span>Siswa</span>
@@ -58,7 +47,22 @@
             </div>
         </div>
     </li>
-    <li class="nav-item">
+
+    <!-- <li <?php if ($page == "murid") {
+                ?> class="nav-item active" <?php
+                                        } else {
+                                            ?> class="nav-item" <?php
+                                                            } ?>>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Siswa</span>
+        </a> -->
+
+    <li <?php if ($page == "officer") {
+        ?> class="nav-item active" <?php
+                                } else {
+                                    ?> class="nav-item" <?php
+                                                    } ?>>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa-solid fa-users"></i>
             <span>Petugas</span>
@@ -73,7 +77,17 @@
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li <?php if ($page == "officer") {
+                ?> class="nav-item active" <?php
+                                        } else {
+                                            ?> class="nav-item" <?php
+                                                    } ?>> -->
+
+    <li <?php if ($page == "book") {
+        ?>class="nav-item active" <?php
+                                } else {
+                                    ?> class="nav-item" <?php
+                                                        } ?> class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fa-solid fa-book"></i>
             <span>Buku</span>

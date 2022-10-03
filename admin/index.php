@@ -161,7 +161,7 @@ if (isset($_SESSION['nis'])) {
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fa-solid fa-book-bookmark fa-2x text-gray-300"></i>
+                                            <i class="fa-solid fa-chalkboard-user fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +179,10 @@ if (isset($_SESSION['nis'])) {
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
+                                                $query = read('peminjaman', 'id_peminjaman');
+                                                $row = mysqli_num_rows($query);
 
+                                                echo "<h1> " . $row . "</h1>";
                                                 ?>
                                             </div>
                                         </div>

@@ -1,6 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+$page = "officer";
 // back-end keamanan akses tampilan dieo
 session_start();
 if (!isset($_SESSION['nama'])) {
