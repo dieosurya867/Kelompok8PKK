@@ -53,6 +53,13 @@ function edit_join($table, $condition, $colkey, $id)
     return $cek;
 }
 
+function edit_join2($tablejoin, $condition, $and, $orderby)
+{
+    global $db;
+    $query = "SELECT * FROM $tablejoin WHERE $condition  AND $and ORDER BY $orderby DESC ";
+    $cek = mysqli_query($db, $query);
+    return $cek;
+}
 
 function update($tabel, $value, $kolomkey, $valuekey)
 {
