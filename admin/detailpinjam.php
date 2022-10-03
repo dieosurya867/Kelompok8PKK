@@ -11,17 +11,7 @@ if (isset($_SESSION['nis'])) {
 }
 
 // Gita 
-//hapus data
-if (isset($_GET['id_peminjaman'])) {
-    $id_peminjaman = $_GET['id_peminjaman'];
-    $query = delete("peminjaman", "id_peminjaman", "$id_peminjaman");
 
-    if ($query) {
-        echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
-    } else {
-        echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
-    }
-}
 
 ?>
 
@@ -126,8 +116,9 @@ if (isset($_GET['id_peminjaman'])) {
                                     $id_buku = $_POST['buku'];
                                     $id_peminjaman = $_POST['id_peminjaman'];
                                     $kuantitas = $_POST['kuantitas'];
+                                    $status = 'Dipinjam';
                                    
-                                    $add = create("detail_peminjaman", "id_detail_peminjaman, id_buku, id_peminjaman, kuantitas", "'$id_detailpeminjaman','$id_buku','$id_peminjaman', '$kuantitas'");
+                                    $add = create("detail_peminjaman", "id_detail_peminjaman, id_buku, id_peminjaman, kuantitas, status", "'$id_detailpeminjaman','$id_buku','$id_peminjaman', '$kuantitas', '$status'");
 
                                     if ($add) {
                                         echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
