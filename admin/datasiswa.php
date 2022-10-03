@@ -101,7 +101,7 @@ if (isset($_GET['nis'])) {
                                     Tambah Anggota
                                 </a> <br><br>
 
-                                <table class="table table-bordered" id="dataTable" width="110%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>

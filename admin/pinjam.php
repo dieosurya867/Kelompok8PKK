@@ -118,9 +118,9 @@ if (isset($_GET['id_peminjaman'])) {
                                                 <td><?= $data['tanggal_peminjaman'] ?></td>
                                                 <td><?= $data['tanggal_pengembalian'] ?></td>
                                                 <td colspan="3">
+                                                    <a href='detailpinjam.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>' class="fa-brands fa-algolia fa-2xl btn btn-sm btn-warning" role="button"></a>
                                                     <a href='edit_peminjaman.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
                                                     <a href='pinjam.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
-                                                    <a href='detailpinjam.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>' class="fa-brands fa-algolia fa-2xl btn btn-sm btn-warning" role="button"></a>
                                                 </td>
                                             </tr>
                                         <?php

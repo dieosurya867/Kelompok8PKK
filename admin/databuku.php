@@ -112,6 +112,7 @@ if (isset($_GET['id_buku'])) {
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Aksi</th>
                                             <th>ID Buku</th>
                                             <th>Penulis</th>
                                             <th>Tahun</th>
@@ -121,12 +122,13 @@ if (isset($_GET['id_buku'])) {
                                             <th>Cover</th>
                                             <th>Sinopsis</th>
                                             <th>Stok</th>
-                                            <th>Aksi</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
+                                            <th>Aksi</th>
                                             <th>ID Buku</th>
                                             <th>Penulis</th>
                                             <th>Tahun</th>
@@ -136,7 +138,7 @@ if (isset($_GET['id_buku'])) {
                                             <th>Cover</th>
                                             <th>Sinopsis</th>
                                             <th>Stok</th>
-                                            <th>Aksi</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -149,7 +151,12 @@ if (isset($_GET['id_buku'])) {
                                         ?>
                                             <tr>
                                                 <td><?= $no;
-                                                    $no++ ?></td>
+                                                    $no++ ?>
+                                                    </td>
+                                                <td colspan="">
+                                                    <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
+                                                    <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
+                                                </td>
                                                 <td><?= $data['id_buku'] ?></td>
                                                 <td><?= $data['penulis'] ?></td>
                                                 <td><?= $data['tahun'] ?></td>
@@ -161,11 +168,7 @@ if (isset($_GET['id_buku'])) {
                                                 </td>
                                                 <td><?= $data['sinopsis'] ?></td>
                                                 <td><?= $data['stok'] ?></td>
-                                                <td colspan="2">
-                                                    <a href='edit_buku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
-                                                    <a href='databuku.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
-                                                    <a href='pinjam.php?id_buku=<?php echo htmlspecialchars($data['id_buku']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-warning" role="button"></a>
-                                                </td>
+                                              
                                             </tr>
                                         <?php
                                         }
