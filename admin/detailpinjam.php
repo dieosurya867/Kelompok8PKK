@@ -88,20 +88,12 @@ if (isset($_SESSION['nis'])) {
                                 <div class="mb-3">
 
                                     <label for="pilihkelas">ID Peminjaman</label>
+                                    <?php
+                                    //    Gita Kartika
+                                        $data = $_GET['id_peminjaman'];
+                                    ?>
+                                    <input type="" class="form-control" name="id_peminjaman" id="" value="<?php echo $data?>" readonly>
 
-                                    <select class="form-control" name="id_peminjaman">
-                                        <option value="">--Pilih ID Peminjaman--</option>
-                                        <?php
-                                        $get_data = read('peminjaman', 'id_peminjaman');
-                                        while ($data = mysqli_fetch_array($get_data)) {
-                                        ?>
-                                            <option value="<?php echo $data['id_peminjaman']; ?>">
-                                                <?php echo $data['id_peminjaman']; ?>
-                                            </option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Kuantitas</label>
@@ -116,7 +108,7 @@ if (isset($_SESSION['nis'])) {
                                     $id_buku = $_POST['buku'];
                                     $id_peminjaman = $_POST['id_peminjaman'];
                                     $kuantitas = $_POST['kuantitas'];
-                                    $status = 'Dipinjam';
+                                    $status = 'dipinjam';
                                    
                                     $add = create("detail_peminjaman", "id_detail_peminjaman, id_buku, id_peminjaman, kuantitas, status", "'$id_detailpeminjaman','$id_buku','$id_peminjaman', '$kuantitas', '$status'");
 
