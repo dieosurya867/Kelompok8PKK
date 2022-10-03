@@ -15,7 +15,7 @@ if (isset($_SESSION['nis'])) {
 //hapus data
 if (isset($_GET['id_detail_peminjaman'])) {
     $id_detailpeminjaman = $_GET['id_detail_peminjaman'];
-    $query = delete("detail_peminjaman", "id_detail-peminjaman", "$id_detailpeminjaman");
+    $query = delete("detail_peminjaman", "id_detail_peminjaman", "$id_detailpeminjaman");
 
     if ($query) {
         echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
@@ -133,8 +133,10 @@ if (isset($_GET['id_detail_peminjaman'])) {
                                                 <?php } ?>
                                                 </td>
                                                 <td colspan="">
+                                                
+                                                    <a href='cetakpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-print btn btn-sm btn-warning" role="button"></a>
                                                     <a href='edit_detailpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
-                                                    <a href='cetakpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-warning" role="button"></a>
+                                                    <a href='historipeminjaman.php?id_buku=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
 
                                                 </td>
                                             </tr>
