@@ -94,8 +94,8 @@ if (isset($_GET['id_peminjaman'])) {
                                         <!-- Gita -->
                                         <?php
                                     //$condition = 'peminjaman.id_siswa = siswa.nis, peminjaman.id_petugas = petugas.nip';
-                                    $ambil = read_join('peminjaman, siswa, petugas','peminjaman.id_siswa = siswa.nis','peminjaman.id_petugas = petugas.nip' , 'id_peminjaman');
-                                   // $query = "SELECT FROM peminjaman JOIN siswa ON peminjaman.id_siswa = siswa.nis JOIN petugas ON peminjaman.id_petugas = petugas.nip ORDER BY id_peminjaman DESC";
+                                    // $ambil = read_join('peminjaman, siswa, petugas','peminjaman.id_siswa = siswa.nis','peminjaman.id_petugas = petugas.nip' , 'id_peminjaman');
+                                   $ambil = mysqli_query($db, "SELECT peminjaman.id_peminjaman, siswa.nama as nama_siswa, petugas.nama, peminjaman.tanggal_peminjaman, peminjaman.tanggal_pengembalian  FROM peminjaman JOIN siswa ON peminjaman.id_siswa = siswa.nis JOIN petugas ON peminjaman.id_petugas = petugas.nip ORDER BY id_peminjaman DESC");
                                     //var_dump($condition); die;
                                     $no = 1;
                                     while ($data = mysqli_fetch_assoc($ambil)) {
@@ -104,7 +104,7 @@ if (isset($_GET['id_peminjaman'])) {
                                             <td><?= $no;
                                                 $no++ ?></td>
                                             <td><?= $data['id_peminjaman'] ?></td>
-                                            <td><?= $data['nama'] ?></td>
+                                            <td><?= $data['nama_siswa'] ?></td>
                                             <td><?= $data['nama'] ?></td>
                                             <td><?= $data['tanggal_peminjaman'] ?></td>
                                             <td><?= $data['tanggal_pengembalian'] ?></td>
