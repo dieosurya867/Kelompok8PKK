@@ -111,7 +111,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu:</h6>
-                <a class="collapse-item" href="../admin/pinjam.php">Peminjaman Buku</a>
+                <a class="collapse-item" href="../admin/pinjam.php">Pinjam Buku</a>
+                <a class="collapse-item" href="../admin/historipeminjaman.php">Riwayat Peminjaman Buku</a>
                 <a class="collapse-item" href="../admin/pengembalian.php">Pengembalian Buku</a>
 
             </div>
