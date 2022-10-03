@@ -165,7 +165,7 @@ include '../function/function.php';
         $tglpeminjaman = $_POST['tanggal_peminjaman'];
         $tglpengembalian = $_POST['tanggal_pengembalian'];
         
-        var_dump($petugas); die;
+        //var_dump($petugas); die;
         $add = create("peminjaman", "id_peminjaman, id_siswa, id_petugas, tanggal_peminjaman, tanggal_pengembalian", "'$id_peminjaman','$siswa','$petugas', '$tglpeminjaman', '$tglpengembalian'");
 
         if ($add) {
