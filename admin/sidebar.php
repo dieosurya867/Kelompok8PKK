@@ -12,8 +12,6 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-   
-
     <!-- Nav Item - Dashboard -->
     <li <?php if ($page == "home") {
         ?>class="nav-item active" <?php  } else { ?> class="nav-item" <?php } ?>> <a class="nav-link" href="../admin/index.php">
@@ -47,16 +45,6 @@
             </div>
         </div>
     </li>
-
-    <!-- <li <?php if ($page == "murid") {
-                ?> class="nav-item active" <?php
-                                        } else {
-                                            ?> class="nav-item" <?php
-                                                            } ?>>
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span>Siswa</span>
-        </a> -->
 
     <li <?php if ($page == "officer") {
         ?> class="nav-item active" <?php

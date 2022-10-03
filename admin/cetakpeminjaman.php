@@ -70,100 +70,29 @@ if (isset($_SESSION['nis'])) {
 
                             ?>
 
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">ID : </h5>
-                                </div>
-
-                                <div class="col">
-                                    <?= $data['id_detail_peminjaman'] ?>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">NIS : </h5>
-                                </div>
-
-                                <div class="col">
-                                    <?= $data['nis'] ?>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Nama Siswa : </h5>
-                                </div>
-                                <div class="col">
-                                    <?= $data['nama_siswa'] ?>
-
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h5 class="h5 ml-0 mb-2 text-gray-800">ID : <?= $data['id_detail_peminjaman'] ?></h5>
+                                        <h5 class="h5 mb-2 text-gray-800">NIS : <?= $data['nis'] ?> </h5>
+                                        <h5 class="h5 mb-2 text-gray-800">Nama Siswa : <?= $data['nama_siswa'] ?></h5>
+                                        <h5 class="h5 text-gray-800">Cover : </h5>
+                                        <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:180px">
+                                        <h5 class="h5 text-gray-800">Judul : <?= $data['judul'] ?></h5>
+                                    </div>
+                                    <div class="col-4">
+                                        <h5 class="h5 mb-2 text-gray-800">Kelas : <?= $data['nama_kelas'] ?></h5>
+                                        <h5 class="h5 mb-2 text-gray-800">Nama Petugas : <?= $data['nama_petugas'] ?></h5>
+                                        <h5 class="h5 mb-2 text-gray-800">Tanggal Peminjaman : <?= $data['tanggal_peminjaman'] ?></h5>
+                                        <h5 class="h5 mb-2 text-gray-800">Tanggal Pengembalian : <?= $data['tanggal_pengembalian'] ?></h5>
+                                        <h5 class="h5 mb-2 text-gray-800">Jumlah : <?= $data['kuantitas'] ?></h5>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Kelas : </h5>
-                                </div>
-                                <div class="col">
-                                    <?= $data['nama_kelas'] ?>
 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Nama Petugas : </h5>
-                                </div>
-                                <div class="col">
-                                    <?= $data['nama_petugas'] ?>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Cover : </h5>
-                                </div>
-                                <div class="col">
-                                    <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:180px">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Judul : </h5>
-                                </div>
-                                <div class="col">
-                                    <?= $data['judul'] ?>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Jumlah : </h5>
-                                </div>
-                                <div class="col">
-                                    <?= $data['kuantitas'] ?>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Tanggal Peminjaman : </h5>
-                                </div>
-                                <div class="col">
-                                    <?= $data['tanggal_peminjaman'] ?>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="h5 mb-2 text-gray-800">Tanggal Pengembalian : </h5>
-                                </div>
-                                <div class="col">
-                                    <?= $data['tanggal_pengembalian'] ?>
-
-                                </div>
-                            </div> <br>
+                            <br>
                             <a href="cetak.php" class="btn btn-primary">Cetak</a>
                         </div>
-
                     </div>
 
                 </div>
