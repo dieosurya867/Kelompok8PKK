@@ -123,14 +123,16 @@ if (isset($_GET['id_detail_peminjaman'])) {
                                                 <td><?= $data['kuantitas'] ?></td>
                                                 <td><?= $data['id_peminjaman'] ?></td>
                                                 <td>
-                                                      
-                                                <?php if ($data['status'] == 'dipinjam' ) { ?>
-                                                    <span class="badge text-bg-success">Dipinjam</span>
-                                                <?php } elseif  ($data['status'] == 'dikembalikan' ) { ?>
-                                                    <span class="badge text-bg-warning">Dikembalikan</span>
-                                                <?php } elseif  ($data['status'] == 'belumkembali' ) { ?>
-                                                    <span class="badge text-bg-danger">Belum Dikembalikan</span>
-                                                <?php } ?>
+
+                                                    <?php if ($data['status'] == 'dipinjam') { ?>
+                                                        <span class="badge bg-warning text-white">
+                                                            Dipinjam
+                                                        </span>
+                                                    <?php } elseif ($data['status'] == 'dikembalikan') { ?>
+                                                        <span class="badge bg-success text-white">Dikembalikan</span>
+                                                    <?php } elseif ($data['status'] == 'belumkembali') { ?>
+                                                        <span class="badge bg-danger text-white">Belum Dikembalikan</span>
+                                                    <?php } ?>
                                                 </td>
                                                 <td colspan="">
                                                     <a href='edit_detailpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
