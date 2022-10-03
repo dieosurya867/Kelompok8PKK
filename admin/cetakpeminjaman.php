@@ -72,15 +72,16 @@ if (isset($_SESSION['nis'])) {
 
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-8">
+                                    <div class="col-4">
                                         <h5 class="h5 ml-0 mb-2 text-gray-800">ID : <?= $data['id_detail_peminjaman'] ?></h5>
                                         <h5 class="h5 mb-2 text-gray-800">NIS : <?= $data['nis'] ?> </h5>
                                         <h5 class="h5 mb-2 text-gray-800">Nama Siswa : <?= $data['nama_siswa'] ?></h5>
                                         <h5 class="h5 text-gray-800">Cover : </h5>
                                         <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:180px">
-                                        <h5 class="h5 text-gray-800">Judul : <?= $data['judul'] ?></h5>
+
                                     </div>
                                     <div class="col-4">
+                                        <h5 class="h5 text-gray-800">Judul : <?= $data['judul'] ?></h5>
                                         <h5 class="h5 mb-2 text-gray-800">Kelas : <?= $data['nama_kelas'] ?></h5>
                                         <h5 class="h5 mb-2 text-gray-800">Nama Petugas : <?= $data['nama_petugas'] ?></h5>
                                         <h5 class="h5 mb-2 text-gray-800">Tanggal Peminjaman : <?= $data['tanggal_peminjaman'] ?></h5>
