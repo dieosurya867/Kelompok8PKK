@@ -1,6 +1,15 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +27,7 @@ include '../function/function.php';
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -58,57 +65,59 @@ include '../function/function.php';
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="" class="form-label">ID Peminjaman</label>
-                                    <input type="text" class="form-control" name="id_peminjaman" id=""
-                                        placeholder="Masukkan ID Peminjaman">
+                                    <input type="text" class="form-control" name="id_peminjaman" id="" placeholder="Masukkan ID Peminjaman">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="" class="form-label">ID Peminjaman</label>
+                                    <input type="text" class="form-control" name="judul" id="" placeholder="Masukkan ID Peminjaman" readonly>
 
                                 </div>
-                               
+
                                 <div class="mb-3">
 
-                                        <label for="pilihkelas">Siswa</label>
+                                    <label for="pilihkelas">Siswa</label>
 
-                                            <select class="form-control" name="siswa">
-                                                <option value="">--Pilih Siswa--</option>
-                                                <?php
-                                                    $get_data = read('siswa','nis');
-                                                    while ($data = mysqli_fetch_array($get_data)) {
-                                                ?>
-                                                <option value="<?php echo $data['nis'];?>">
-                                                    <?php echo $data['nama'];?>
-                                                </option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
+                                    <select class="form-control" name="siswa">
+                                        <option value="">--Pilih Siswa--</option>
+                                        <?php
+                                        $get_data = read('siswa', 'nis');
+                                        while ($data = mysqli_fetch_array($get_data)) {
+                                        ?>
+                                            <option value="<?php echo $data['nis']; ?>">
+                                                <?php echo $data['nama']; ?>
+                                            </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
 
-                                        <label for="pilihkelas">Petugas</label>
+                                    <label for="pilihkelas">Petugas</label>
 
-                                            <select class="form-control" name="petugas">
-                                                <option value="">--Pilih Petugas--</option>
-                                                <?php
-                                                    $get_data = read('petugas','nip');
-                                                    while ($data = mysqli_fetch_array($get_data)) {
-                                                ?>
-                                                <option value="<?php echo $data['nip'];?>">
-                                                    <?php echo $data['nama'];?>
-                                                </option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
+                                    <select class="form-control" name="petugas">
+                                        <option value="">--Pilih Petugas--</option>
+                                        <?php
+                                        $get_data = read('petugas', 'nip');
+                                        while ($data = mysqli_fetch_array($get_data)) {
+                                        ?>
+                                            <option value="<?php echo $data['nip']; ?>">
+                                                <?php echo $data['nama']; ?>
+                                            </option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tanggal Peminjaman</label>
-                                    <input type="date" class="form-control" name="tanggal_peminjaman" id=""
-                                        placeholder="Masukkan Tanggal Peminjaman">
+                                    <input type="date" class="form-control" name="tanggal_peminjaman" id="" placeholder="Masukkan Tanggal Peminjaman">
 
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Tanggal Pengembalian</label>
-                                    <input type="date" class="form-control" name="tanggal_pengembalian" id=""
-                                        placeholder="Masukkan Tanggal Pengembalian">
+                                    <input type="date" class="form-control" name="tanggal_pengembalian" id="" placeholder="Masukkan Tanggal Pengembalian">
 
                                 </div>
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
@@ -136,8 +145,7 @@ include '../function/function.php';
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -164,7 +172,7 @@ include '../function/function.php';
         $petugas = $_POST['petugas'];
         $tglpeminjaman = $_POST['tanggal_peminjaman'];
         $tglpengembalian = $_POST['tanggal_pengembalian'];
-        
+
         //var_dump($petugas); die;
         $add = create("peminjaman", "id_peminjaman, id_siswa, id_petugas, tanggal_peminjaman, tanggal_pengembalian", "'$id_peminjaman','$siswa','$petugas', '$tglpeminjaman', '$tglpengembalian'");
 

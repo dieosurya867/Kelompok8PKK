@@ -1,7 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+$page = "home";
 // back-end keamanan akses tampilan dieo
 session_start();
 if (!isset($_SESSION['nama'])) {
@@ -60,8 +60,6 @@ if (isset($_SESSION['nis'])) {
 
                     <!-- Content Row -->
                     <div class="row">
-
-
                         <!-- Back End Count Data Gita Kartika -->
                         <!-- Data Anggota Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -115,7 +113,6 @@ if (isset($_SESSION['nis'])) {
                             </div>
                         </div>
 
-                        <!-- Data Peminjaman Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -124,22 +121,13 @@ if (isset($_SESSION['nis'])) {
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                                 Data Buku
                                             </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                        <?php
-                                                        $query = read('buku', 'id_buku');
-                                                        $row = mysqli_num_rows($query);
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $query = read('buku', 'id_buku');
+                                                $row = mysqli_num_rows($query);
 
-                                                        echo "<h1> " . $row . "</h1>";
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
+                                                echo "<h1> " . $row . "</h1>";
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -149,6 +137,10 @@ if (isset($_SESSION['nis'])) {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Data Peminjaman Card Example -->
+
+
 
                         <!-- Data Pengembalian Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -268,18 +260,19 @@ if (isset($_SESSION['nis'])) {
                             </div>
                         </div>
                     </div>
-                    <!-- End Content Row -->
+
+
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End Content Row -->
             </div>
+            <!-- /.container-fluid -->
             <?php include("footer.php") ?>
-            <!-- End of Main Content -->
-
         </div>
-        <!-- End of Content Wrapper -->
 
+        <!-- End of Main Content -->
     </div>
-
+    <!-- End of Content Wrapper -->
+    </div>
     <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->

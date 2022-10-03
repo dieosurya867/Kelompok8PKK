@@ -2,6 +2,14 @@
 include '../function/config.php';
 include '../function/function.php';
 
+session_start();
+if (!isset($_SESSION['nama'])) {
+    header("Location: ../login.php");
+}
+if (isset($_SESSION['nis'])) {
+    header('location: ../siswa/index.php');
+}
+
 // Gita 
 //hapus data
 if (isset($_GET['id_peminjaman'])) {
@@ -19,18 +27,17 @@ if (isset($_GET['id_peminjaman'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Peminjaman</title>
 
-     <!-- Custom fonts for this template -->
-     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
@@ -38,13 +45,14 @@ if (isset($_GET['id_peminjaman'])) {
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
+
 <body id="page-top">
-     <!-- Page Wrapper -->
-     <div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
         <?php include("sidebar.php") ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-        <?php include("topbar.php") ?>
+            <?php include("topbar.php") ?>
             <!-- Main Content -->
             <div id="content">
                 <!-- Back End Gita Kartika Pariwara -->
@@ -93,33 +101,29 @@ if (isset($_GET['id_peminjaman'])) {
                                     <tbody>
                                         <!-- Gita -->
                                         <?php
-                                    //$condition = 'peminjaman.id_siswa = siswa.nis, peminjaman.id_petugas = petugas.nip';
-                                    // $ambil = read_join('peminjaman, siswa, petugas','peminjaman.id_siswa = siswa.nis','peminjaman.id_petugas = petugas.nip' , 'id_peminjaman');
-                                   $ambil = mysqli_query($db, "SELECT peminjaman.id_peminjaman, siswa.nama as nama_siswa, petugas.nama, peminjaman.tanggal_peminjaman, peminjaman.tanggal_pengembalian  FROM peminjaman JOIN siswa ON peminjaman.id_siswa = siswa.nis JOIN petugas ON peminjaman.id_petugas = petugas.nip ORDER BY id_peminjaman DESC");
-                                    //var_dump($condition); die;
-                                    $no = 1;
-                                    while ($data = mysqli_fetch_assoc($ambil)) {
-                                    ?>
-                                        <tr>
-                                            <td><?= $no;
-                                                $no++ ?></td>
-                                            <td><?= $data['id_peminjaman'] ?></td>
-                                            <td><?= $data['nama_siswa'] ?></td>
-                                            <td><?= $data['nama'] ?></td>
-                                            <td><?= $data['tanggal_peminjaman'] ?></td>
-                                            <td><?= $data['tanggal_pengembalian'] ?></td>
-                                            <td colspan="2">
-                                                <a href='edit_peminjaman.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>'
-                                                    class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary"
-                                                    role="button"></a>
-                                                <a href='pinjam.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>'
-                                                    class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button"
-                                                    onclick="return confirm('Are you sure want to delete this?')"></a>
-                                            </td>
-                                        </tr>
+                                        //$condition = 'peminjaman.id_siswa = siswa.nis, peminjaman.id_petugas = petugas.nip';
+                                        // $ambil = read_join('peminjaman, siswa, petugas','peminjaman.id_siswa = siswa.nis','peminjaman.id_petugas = petugas.nip' , 'id_peminjaman');
+                                        $ambil = mysqli_query($db, "SELECT peminjaman.id_peminjaman, siswa.nama as nama_siswa, petugas.nama, peminjaman.tanggal_peminjaman, peminjaman.tanggal_pengembalian  FROM peminjaman JOIN siswa ON peminjaman.id_siswa = siswa.nis JOIN petugas ON peminjaman.id_petugas = petugas.nip ORDER BY id_peminjaman DESC");
+                                        //var_dump($condition); die;
+                                        $no = 1;
+                                        while ($data = mysqli_fetch_assoc($ambil)) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $no;
+                                                    $no++ ?></td>
+                                                <td><?= $data['id_peminjaman'] ?></td>
+                                                <td><?= $data['nama_siswa'] ?></td>
+                                                <td><?= $data['nama'] ?></td>
+                                                <td><?= $data['tanggal_peminjaman'] ?></td>
+                                                <td><?= $data['tanggal_pengembalian'] ?></td>
+                                                <td colspan="2">
+                                                    <a href='edit_peminjaman.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
+                                                    <a href='pinjam.php?id_peminjaman=<?php echo htmlspecialchars($data['id_peminjaman']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
+                                                </td>
+                                            </tr>
                                         <?php
-                                    }
-                                    ?>
+                                        }
+                                        ?>
 
                                     </tbody>
                                 </table>
@@ -135,11 +139,11 @@ if (isset($_GET['id_peminjaman'])) {
         </div>
         <!-- End of Content Wrapper -->
     </div>
-    
-    <!-- End of Page Wrapper -->
-    
 
-<!-- Bootstrap core JavaScript-->
+    <!-- End of Page Wrapper -->
+
+
+    <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -159,4 +163,5 @@ if (isset($_GET['id_peminjaman'])) {
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
