@@ -13,9 +13,9 @@ if (isset($_SESSION['nis'])) {
 
 // Gita 
 //hapus data
-if (isset($_GET['id_detail_peminjaman'])) {
-    $id_detailpeminjaman = $_GET['id_detail_peminjaman'];
-    $query = delete("detail_peminjaman", "id_detail_peminjaman", "$id_detailpeminjaman");
+if (isset($_GET['id_peminjaman'])) {
+    $id_peminjaman = $_GET['id_peminjaman'];
+    $query = delete("peminjaman", "id_peminjaman", "$id_peminjaman");
 
     if ($query) {
         echo "<div class='alert alert-info'> Data berhasil dihapus.</div>";
@@ -36,10 +36,6 @@ if (isset($_GET['id_detail_peminjaman'])) {
     <title>Data Peminjaman</title>
 
     <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <script src="bootstrap/js/bootstrap.min.css" type="text/javascript"></script>
-    <script src="bootstrap/js/bootstrap.bundle.js" type="text/javascript"></script>
-
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
@@ -66,40 +62,37 @@ if (isset($_GET['id_detail_peminjaman'])) {
                 <div class="container-fluid">
 
                     <!-- Page Heading  Gita-->
-                    <h1 class="h3 mb-2 text-gray-800">Detail Peminjaman Buku</h1>
-                    <p class="mb-4">Berikut ini adalah data detail peminjaman buku perpustakaan</p>
+                    <h1 class="h3 mb-2 text-gray-800">Pengenmbalian Buku</h1>
+                    <p class="mb-4">Berikut ini adalah data Pengembalian buku perpustakaan</p>
 
                     <!-- DataTales Example Gita-->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Detail Peminjaman</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Peminjaman</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                                <a href="add_peminjaman.php" class="btn btn-primary">
+                                    Tambah Peminjaman
+                                </a> <br><br>
 
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Detail Peminjaman</th>
-                                            <th>Cover</th>
-                                            <th>Judul Buku</th>
-                                            <th>Kuantitas</th>
                                             <th>ID Peminjaman</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Tanggal Kembali</th>
+                                            <th>Denda</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Detail Peminjaman</th>
-                                            <th>Cover</th>
-                                            <th>Judul Buku</th>
-                                            <th>Kuantitas</th>
                                             <th>ID Peminjaman</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Tanggal Kembali</th>
+                                            <th>Denda</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -107,7 +100,7 @@ if (isset($_GET['id_detail_peminjaman'])) {
                                         <?php
                                         //$condition = 'peminjaman.id_siswa = siswa.nis, peminjaman.id_petugas = petugas.nip';
                                         // $ambil = read_join('peminjaman, siswa, petugas','peminjaman.id_siswa = siswa.nis','peminjaman.id_petugas = petugas.nip' , 'id_peminjaman');
-                                        $ambil = mysqli_query($db, "SELECT *, id_detail_peminjaman, buku.cover as cover_buku, buku.judul as judul_buku, kuantitas, detail_peminjaman.id_peminjaman FROM detail_peminjaman JOIN buku ON detail_peminjaman.id_buku = buku.id_buku JOIN peminjaman ON detail_peminjaman.id_peminjaman = peminjaman.id_peminjaman ORDER BY id_detail_peminjaman DESC");
+                                        $ambil = mysqli_query($db, "SELECT pengembalian.id_pengembalian, siswa.nama as nama_siswa,  pengembalian.tanggal_pengembalian, pengembalian.denda  FROM peminjaman JOIN siswa ON peminjaman.id_siswa = siswa.nis JOIN petugas ON peminjaman.id_petugas = petugas.nip ORDER BY id_peminjaman DESC");
                                         //var_dump($condition); die;
                                         $no = 1;
                                         while ($data = mysqli_fetch_assoc($ambil)) {
@@ -115,32 +108,10 @@ if (isset($_GET['id_detail_peminjaman'])) {
                                             <tr>
                                                 <td><?= $no;
                                                     $no++ ?></td>
-                                                <td><?= $data['id_detail_peminjaman'] ?></td>
-                                                <td>
-                                                    <img class="img-thumbnail" src="../foto/<?= $data['cover_buku'] ?>" alt="foto" style="width:175px">
-                                                </td>
-                                                <td><?= $data['judul_buku'] ?></td>
-                                                <td><?= $data['kuantitas'] ?></td>
                                                 <td><?= $data['id_peminjaman'] ?></td>
-                                                <td>
-
-                                                    <?php if ($data['status'] == 'dipinjam') { ?>
-                                                        <span class="badge bg-warning text-white">
-                                                            Dipinjam
-                                                        </span>
-                                                    <?php } elseif ($data['status'] == 'dikembalikan') { ?>
-                                                        <span class="badge bg-success text-white">Dikembalikan</span>
-                                                    <?php } elseif ($data['status'] == 'belumkembali') { ?>
-                                                        <span class="badge bg-danger text-white">Belum Dikembalikan</span>
-                                                    <?php } ?>
-                                                </td>
-                                                <td colspan="">
-                                                
-                                                    <a href='cetakpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-print btn btn-sm btn-warning" role="button"></a>
-                                                    <a href='edit_detailpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
-                                                    <a href='historipeminjaman.php?id_buku=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-trash-can btn btn-sm btn-danger" role="button" onclick="return confirm('Are you sure want to delete this?')"></a>
-
-                                                </td>
+                                                <td><?= $data['nama_siswa'] ?></td>
+                                                <td><?= $data['tanggal_pengembalian'] ?></td>
+                                                <td><?= $data['denda'] ?></td>
                                             </tr>
                                         <?php
                                         }
@@ -180,9 +151,6 @@ if (isset($_GET['id_detail_peminjaman'])) {
 
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
-    <!-- Link Icon Ionic-->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
