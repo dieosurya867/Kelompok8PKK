@@ -35,6 +35,10 @@ if (isset($_GET['id_detail_peminjaman'])) {
     <title>Data Peminjaman</title>
 
     <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.css" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap.bundle.js" type="text/javascript"></script>
+
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/7b36e01bb8.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
@@ -102,7 +106,7 @@ if (isset($_GET['id_detail_peminjaman'])) {
                                         <?php
                                         //$condition = 'peminjaman.id_siswa = siswa.nis, peminjaman.id_petugas = petugas.nip';
                                         // $ambil = read_join('peminjaman, siswa, petugas','peminjaman.id_siswa = siswa.nis','peminjaman.id_petugas = petugas.nip' , 'id_peminjaman');
-                                        $ambil = mysqli_query($db, "SELECT id_detail_peminjaman, buku.cover as cover_buku, buku.judul as judul_buku, kuantitas, detail_peminjaman.id_peminjaman FROM detail_peminjaman JOIN buku ON detail_peminjaman.id_buku = buku.id_buku JOIN peminjaman ON detail_peminjaman.id_peminjaman = peminjaman.id_peminjaman ORDER BY id_detail_peminjaman DESC");
+                                        $ambil = mysqli_query($db, "SELECT *, id_detail_peminjaman, buku.cover as cover_buku, buku.judul as judul_buku, kuantitas, detail_peminjaman.id_peminjaman FROM detail_peminjaman JOIN buku ON detail_peminjaman.id_buku = buku.id_buku JOIN peminjaman ON detail_peminjaman.id_peminjaman = peminjaman.id_peminjaman ORDER BY id_detail_peminjaman DESC");
                                         //var_dump($condition); die;
                                         $no = 1;
                                         while ($data = mysqli_fetch_assoc($ambil)) {
@@ -117,8 +121,18 @@ if (isset($_GET['id_detail_peminjaman'])) {
                                                 <td><?= $data['judul_buku'] ?></td>
                                                 <td><?= $data['kuantitas'] ?></td>
                                                 <td><?= $data['id_peminjaman'] ?></td>
-                                                <td></td>
+                                                <td>
+                                                      
+                                                <?php if ($data['status'] == 'dipinjam' ) { ?>
+                                                    <span class="badge text-bg-success">Dipinjam</span>
+                                                <?php } elseif  ($data['status'] == 'dikembalikan' ) { ?>
+                                                    <span class="badge text-bg-warning">Dikembalikan</span>
+                                                <?php } elseif  ($data['status'] == 'belumkembali' ) { ?>
+                                                    <span class="badge text-bg-danger">Belum Dikembalikan</span>
+                                                <?php } ?>
+                                                </td>
                                                 <td colspan="">
+                                                    <a href='edit_detailpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-primary" role="button"></a>
                                                     <a href='cetakpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-warning" role="button"></a>
                                                    
                                                 </td>
