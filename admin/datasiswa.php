@@ -100,7 +100,7 @@ if (isset($_GET['nis'])) {
                                     Tambah Anggota
                                 </a> <br><br>
 
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="110%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -128,7 +128,7 @@ if (isset($_GET['nis'])) {
                                         <!-- Gita -->
                                         <?php
 
-                                        $ambil = read_join('siswa, kelas', 'siswa.id_kelas = kelas.id_kelas ', 'nis');
+                                        $ambil = read_join1('siswa, kelas', 'siswa.id_kelas = kelas.id_kelas ', 'nis');
                                         $no = 1;
                                         while ($data = mysqli_fetch_assoc($ambil)) {
                                         ?>
