@@ -58,7 +58,7 @@ if (isset($_GET['id_buku'])) {
         <?php include("sidebar2.php") ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <?php include("../admin/topbar.php") ?>
+            <?php include("topbar.php") ?>
             <!-- Main Content -->
             <div id="content">
                 <!-- Back End Gita Kartika Pariwara -->
