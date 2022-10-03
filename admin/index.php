@@ -228,6 +228,10 @@ if (isset($_SESSION['nis'])) {
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
+                                                $query = read('peminjaman', 'id_peminjaman');
+                                                $row = mysqli_num_rows($query);
+
+                                                echo "<h1> " . $row . "</h1>";
 
                                                 ?>
                                             </div>
