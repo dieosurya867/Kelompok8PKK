@@ -1,7 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+$page = "nyeleh";
 session_start();
 if (!isset($_SESSION['nama'])) {
     header("Location: ../login.php");

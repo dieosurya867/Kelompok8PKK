@@ -1,7 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+$page = "nyeleh";
 // back-end keamanan akses tampilan dieo
 session_start();
 if (!isset($_SESSION['nama'])) {
@@ -66,33 +66,33 @@ if (isset($_SESSION['nis'])) {
                             <!-- Gita kartika -->
                             <?php
                             $get_data = mysqli_query($db, "SELECT *, detail_peminjaman.id_detail_peminjaman,  siswa.nama as nama_siswa, kelas.nama_kelas, petugas.nama as nama_petugas, buku.cover, buku.judul, kuantitas, tanggal_peminjaman, tanggal_pengembalian from detail_peminjaman, peminjaman, siswa, petugas, buku, kelas where detail_peminjaman.id_peminjaman = peminjaman.id_peminjaman and peminjaman.id_siswa = siswa.nis and siswa.id_kelas = kelas.id_kelas and peminjaman.id_petugas = petugas.nip and detail_peminjaman.id_buku = buku.id_buku order by id_detail_peminjaman desc ");
-                            $data=mysqli_fetch_array($get_data);
+                            $data = mysqli_fetch_array($get_data);
 
                             ?>
-                             
+
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">ID : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">ID : </h5>
                                 </div>
-                             
+
                                 <div class="col">
                                     <?= $data['id_detail_peminjaman'] ?>
                                 </div>
-                             
+
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">NIS : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">NIS : </h5>
                                 </div>
-                                
+
                                 <div class="col">
                                     <?= $data['nis'] ?>
                                 </div>
-                            
+
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Nama Siswa : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Nama Siswa : </h5>
                                 </div>
                                 <div class="col">
                                     <?= $data['nama_siswa'] ?>
@@ -101,7 +101,7 @@ if (isset($_SESSION['nis'])) {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Kelas : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Kelas : </h5>
                                 </div>
                                 <div class="col">
                                     <?= $data['nama_kelas'] ?>
@@ -110,7 +110,7 @@ if (isset($_SESSION['nis'])) {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Nama Petugas : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Nama Petugas : </h5>
                                 </div>
                                 <div class="col">
                                     <?= $data['nama_petugas'] ?>
@@ -119,15 +119,15 @@ if (isset($_SESSION['nis'])) {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Cover : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Cover : </h5>
                                 </div>
                                 <div class="col">
-                                <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:180px">
+                                    <img class="img-thumbnail" src="../foto/<?= $data['cover'] ?>" alt="foto" style="width:180px">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Judul : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Judul : </h5>
                                 </div>
                                 <div class="col">
                                     <?= $data['judul'] ?>
@@ -136,7 +136,7 @@ if (isset($_SESSION['nis'])) {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Jumlah : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Jumlah : </h5>
                                 </div>
                                 <div class="col">
                                     <?= $data['kuantitas'] ?>
@@ -145,7 +145,7 @@ if (isset($_SESSION['nis'])) {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Tanggal Peminjaman : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Tanggal Peminjaman : </h5>
                                 </div>
                                 <div class="col">
                                     <?= $data['tanggal_peminjaman'] ?>
@@ -154,7 +154,7 @@ if (isset($_SESSION['nis'])) {
                             </div>
                             <div class="row">
                                 <div class="col">
-                                <h5 class="h5 mb-2 text-gray-800">Tanggal Pengembalian : </h5>
+                                    <h5 class="h5 mb-2 text-gray-800">Tanggal Pengembalian : </h5>
                                 </div>
                                 <div class="col">
                                     <?= $data['tanggal_pengembalian'] ?>
@@ -163,9 +163,9 @@ if (isset($_SESSION['nis'])) {
                             </div> <br>
                             <a href="cetak.php" class="btn btn-primary">Cetak</a>
                         </div>
-                       
+
                     </div>
-                   
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -204,7 +204,7 @@ if (isset($_SESSION['nis'])) {
 
     <!-- Gita -->
 
-   
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>

@@ -81,13 +81,13 @@
                 ?> class="nav-item active" <?php
                                         } else {
                                             ?> class="nav-item" <?php
-                                                    } ?>> -->
+                                                            } ?>> -->
 
     <li <?php if ($page == "book") {
         ?>class="nav-item active" <?php
                                 } else {
                                     ?> class="nav-item" <?php
-                                                        } ?> class="nav-item">
+                                                    } ?> class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fa-solid fa-book"></i>
             <span>Buku</span>
@@ -101,7 +101,11 @@
             </div>
     </li>
 
-    <li class="nav-item">
+    <li <?php if ($page == "class") {
+        ?> class="nav-item active" <?php
+                                } else {
+                                    ?> class="nav-item" <?php
+                                                    } ?>>
         <a class="nav-link" href="../admin/datakelas.php">
             <i class="fa-solid fa-school"></i>
             <span>Kelas</span></a>
@@ -117,7 +121,11 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li <?php if ($page == "nyeleh") {
+        ?> class="nav-item active" <?php
+                                } else {
+                                    ?> class="nav-item" <?php
+                                                    } ?>>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fa-solid fa-business-time"></i>
             <span>Transaksi</span>
