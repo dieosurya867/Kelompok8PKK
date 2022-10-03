@@ -94,18 +94,18 @@ if (isset($_GET['id_peminjaman'])) {
                                         <!-- Gita -->
                                         <?php
                                     //$condition = 'peminjaman.id_siswa = siswa.nis, peminjaman.id_petugas = petugas.nip';
-                                    //$ambil = read_join('peminjaman, siswa, petugas', $condition, 'id_peminjaman');
-                                    $query = "SELECT FROM peminjaman JOIN siswa ON peminjaman.id_siswa = siswa.nis JOIN petugas ON peminjaman.id_petugas = petugas.nip ORDER BY id_peminjaman DESC";
+                                    $ambil = read_join('peminjaman, siswa, petugas','peminjaman.id_siswa = siswa.nis','peminjaman.id_petugas = petugas.nip' , 'id_peminjaman');
+                                   // $query = "SELECT FROM peminjaman JOIN siswa ON peminjaman.id_siswa = siswa.nis JOIN petugas ON peminjaman.id_petugas = petugas.nip ORDER BY id_peminjaman DESC";
                                     //var_dump($condition); die;
                                     $no = 1;
-                                    while ($data = mysqli_fetch_assoc($query)) {
+                                    while ($data = mysqli_fetch_assoc($ambil)) {
                                     ?>
                                         <tr>
                                             <td><?= $no;
                                                 $no++ ?></td>
                                             <td><?= $data['id_peminjaman'] ?></td>
-                                            <td><?= $data['id_siswa'] ?></td>
-                                            <td><?= $data['id_petugas'] ?></td>
+                                            <td><?= $data['nama'] ?></td>
+                                            <td><?= $data['nama'] ?></td>
                                             <td><?= $data['tanggal_peminjaman'] ?></td>
                                             <td><?= $data['tanggal_pengembalian'] ?></td>
                                             <td colspan="2">

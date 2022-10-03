@@ -11,10 +11,10 @@ function read($table, $orderby)
     return $cek;
 }
 
-function read_join($tablejoin, $condition, $orderby)
+function read_join($tablejoin, $condition, $and, $orderby)
 {
     global $db;
-    $query = "SELECT * FROM $tablejoin WHERE $condition ORDER BY $orderby DESC ";
+    $query = "SELECT * FROM $tablejoin WHERE $condition  AND $and ORDER BY $orderby DESC ";
     $cek = mysqli_query($db, $query);
     return $cek;
 }
