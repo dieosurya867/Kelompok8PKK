@@ -69,12 +69,6 @@ if (isset($_SESSION['nis'])) {
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">ID Peminjaman</label>
-                                    <input type="text" class="form-control" name="judul" id="" placeholder="Masukkan ID Peminjaman" readonly>
-
-                                </div>
-
-                                <div class="mb-3">
 
                                     <label for="pilihkelas">Siswa</label>
 
