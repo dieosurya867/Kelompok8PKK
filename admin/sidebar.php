@@ -62,7 +62,7 @@
         ?> class="nav-item active" <?php
                                 } else {
                                     ?> class="nav-item" <?php
-                                                        } ?>>
+                                                    } ?>>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa-solid fa-users"></i>
             <span>Petugas</span>
@@ -77,7 +77,17 @@
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li <?php if ($page == "officer") {
+                ?> class="nav-item active" <?php
+                                        } else {
+                                            ?> class="nav-item" <?php
+                                                    } ?>> -->
+
+    <li <?php if ($page == "book") {
+        ?>class="nav-item active" <?php
+                                } else {
+                                    ?> class="nav-item" <?php
+                                                        } ?> class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fa-solid fa-book"></i>
             <span>Buku</span>
