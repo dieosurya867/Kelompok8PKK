@@ -1,6 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
+$page = "nyeleh";
 
 session_start();
 if (!isset($_SESSION['nama'])) {
@@ -71,7 +72,7 @@ if (isset($_GET['id_detail_peminjaman'])) {
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                
+
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -120,7 +121,7 @@ if (isset($_GET['id_detail_peminjaman'])) {
                                                 <td></td>
                                                 <td colspan="">
                                                     <a href='cetakpeminjaman.php?id_detail_peminjaman=<?php echo htmlspecialchars($data['id_detail_peminjaman']); ?>' class="fa-solid fa-pen-to-square fa-xs btn btn-sm btn-warning" role="button"></a>
-                                                   
+
                                                 </td>
                                             </tr>
                                         <?php

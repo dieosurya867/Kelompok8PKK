@@ -1,7 +1,7 @@
 <?php
 include '../function/config.php';
 include '../function/function.php';
-
+$page = "nyeleh";
 session_start();
 if (!isset($_SESSION['nama'])) {
     header("Location: ../login.php");
@@ -64,7 +64,7 @@ if (isset($_GET['id_peminjaman'])) {
                     <h1 class="h3 mb-2 text-gray-800">Detail Peminjaman Buku</h1>
                     <p class="mb-4"></p>
 
-                   <!-- Gita -->
+                    <!-- Gita -->
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -119,23 +119,23 @@ if (isset($_GET['id_peminjaman'])) {
                                 </div>
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
-                                
-                            <?php
-                                if (isset($_POST['submit'])) {
-                                    $id_detailpeminjaman = $_POST['id_detailpeminjaman'];
-                                    $id_buku = $_POST['buku'];
-                                    $id_peminjaman = $_POST['id_peminjaman'];
-                                    $kuantitas = $_POST['kuantitas'];
-                                   
-                                    $add = create("detail_peminjaman", "id_detail_peminjaman, id_buku, id_peminjaman, kuantitas", "'$id_detailpeminjaman','$id_buku','$id_peminjaman', '$kuantitas'");
 
-                                    if ($add) {
-                                        echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
-                                        echo "<script>window.location.href='historipeminjaman.php'</script>";
-                                    } else {
-                                        echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
-                                    }
-                                } ?>
+                            <?php
+                            if (isset($_POST['submit'])) {
+                                $id_detailpeminjaman = $_POST['id_detailpeminjaman'];
+                                $id_buku = $_POST['buku'];
+                                $id_peminjaman = $_POST['id_peminjaman'];
+                                $kuantitas = $_POST['kuantitas'];
+
+                                $add = create("detail_peminjaman", "id_detail_peminjaman, id_buku, id_peminjaman, kuantitas", "'$id_detailpeminjaman','$id_buku','$id_peminjaman', '$kuantitas'");
+
+                                if ($add) {
+                                    echo "<div class='alert alert-info'>Data berhasil ditambahkan</div>";
+                                    echo "<script>window.location.href='historipeminjaman.php'</script>";
+                                } else {
+                                    echo "<div class='alert alert-danger'>Data gagal ditambahkan</div>";
+                                }
+                            } ?>
 
 
                         </div>
