@@ -12,7 +12,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <?php var_dump($page); ?>
+   
 
     <!-- Nav Item - Dashboard -->
     <li <?php if ($page == "home") {
