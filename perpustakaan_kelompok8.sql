@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 03, 2022 at 05:45 PM
+-- Generation Time: Oct 03, 2022 at 06:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -76,10 +76,10 @@ CREATE TABLE `detail_peminjaman` (
 
 INSERT INTO `detail_peminjaman` (`id_detail_peminjaman`, `id_buku`, `id_peminjaman`, `kuantitas`, `status`) VALUES
 (2220001, 2, 1110005, 2, 'dipinjam'),
-(2220002, 6, 1110004, 1, 'dipinjam'),
-(2220003, 3, 1110003, 3, 'dipinjam'),
-(2220004, 10, 1110002, 4, 'dipinjam'),
-(2220005, 9, 1110001, 5, 'dipinjam');
+(2220002, 6, 1110004, 1, 'dikembalikan'),
+(2220003, 3, 1110003, 3, 'belumkembali'),
+(2220004, 10, 1110002, 4, 'dikembalikan'),
+(2220005, 9, 1110001, 8, 'dipinjam');
 
 -- --------------------------------------------------------
 
